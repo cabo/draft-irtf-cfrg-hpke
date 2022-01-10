@@ -17,8 +17,8 @@ Expires: 14 July 2022                                            B. Lipp
 
 Abstract
 
-   This document describes a scheme for hybrid public-key encryption
-   (HPKE).  This scheme provides a variant of public-key encryption of
+   This document describes a scheme for hybrid public key encryption
+   (HPKE).  This scheme provides a variant of public key encryption of
    arbitrary-sized plaintexts for a recipient public key.  It also
    includes three authenticated variants, including one that
    authenticates possession of a pre-shared key and two optional ones
@@ -115,7 +115,7 @@ Internet-Draft                    HPKE                      January 2022
 
 
      9.1.  Security Properties . . . . . . . . . . . . . . . . . . .  28
-       9.1.1.  Key Compromise Impersonation  . . . . . . . . . . . .  29
+       9.1.1.  Key-Compromise Impersonation  . . . . . . . . . . . .  29
        9.1.2.  Computational Analysis  . . . . . . . . . . . . . . .  30
        9.1.3.  Post-Quantum Security . . . . . . . . . . . . . . . .  32
      9.2.  Security Requirements on a KEM Used within HPKE . . . . .  33
@@ -126,42 +126,42 @@ Internet-Draft                    HPKE                      January 2022
      9.4.  Security Requirements on an AEAD  . . . . . . . . . . . .  34
      9.5.  Pre-Shared Key Recommendations  . . . . . . . . . . . . .  34
      9.6.  Domain Separation . . . . . . . . . . . . . . . . . . . .  35
-     9.7.  Application Embedding and Non-goals . . . . . . . . . . .  36
+     9.7.  Application Embedding and Non-Goals . . . . . . . . . . .  36
        9.7.1.  Message Order and Message Loss  . . . . . . . . . . .  36
-       9.7.2.  Downgrade Prevention  . . . . . . . . . . . . . . . .  36
+       9.7.2.  Downgrade Prevention  . . . . . . . . . . . . . . . .  37
        9.7.3.  Replay Protection . . . . . . . . . . . . . . . . . .  37
        9.7.4.  Forward Secrecy . . . . . . . . . . . . . . . . . . .  37
        9.7.5.  Bad Ephemeral Randomness  . . . . . . . . . . . . . .  37
-       9.7.6.  Hiding Plaintext Length . . . . . . . . . . . . . . .  37
+       9.7.6.  Hiding Plaintext Length . . . . . . . . . . . . . . .  38
      9.8.  Bidirectional Encryption  . . . . . . . . . . . . . . . .  38
      9.9.  Metadata Protection . . . . . . . . . . . . . . . . . . .  38
    10. Message Encoding  . . . . . . . . . . . . . . . . . . . . . .  39
    11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  39
-     11.1.  KEM Identifiers  . . . . . . . . . . . . . . . . . . . .  39
+     11.1.  KEM Identifiers  . . . . . . . . . . . . . . . . . . . .  40
      11.2.  KDF Identifiers  . . . . . . . . . . . . . . . . . . . .  40
-     11.3.  AEAD Identifiers . . . . . . . . . . . . . . . . . . . .  40
+     11.3.  AEAD Identifiers . . . . . . . . . . . . . . . . . . . .  41
    12. References  . . . . . . . . . . . . . . . . . . . . . . . . .  41
      12.1.  Normative References . . . . . . . . . . . . . . . . . .  41
-     12.2.  Informative References . . . . . . . . . . . . . . . . .  41
-   Appendix A.  Test Vectors . . . . . . . . . . . . . . . . . . . .  45
-     A.1.  DHKEM(X25519, HKDF-SHA256), HKDF-SHA256, AES-128-GCM  . .  46
-       A.1.1.  Base Setup Information  . . . . . . . . . . . . . . .  46
-       A.1.2.  PSK Setup Information . . . . . . . . . . . . . . . .  48
-       A.1.3.  Auth Setup Information  . . . . . . . . . . . . . . .  51
-       A.1.4.  AuthPSK Setup Information . . . . . . . . . . . . . .  54
-     A.2.  DHKEM(X25519, HKDF-SHA256), HKDF-SHA256,
-           ChaCha20Poly1305  . . . . . . . . . . . . . . . . . . . .  57
-       A.2.1.  Base Setup Information  . . . . . . . . . . . . . . .  57
-       A.2.2.  PSK Setup Information . . . . . . . . . . . . . . . .  60
-       A.2.3.  Auth Setup Information  . . . . . . . . . . . . . . .  63
-       A.2.4.  AuthPSK Setup Information . . . . . . . . . . . . . .  66
-     A.3.  DHKEM(P-256, HKDF-SHA256), HKDF-SHA256, AES-128-GCM . . .  69
-       A.3.1.  Base Setup Information  . . . . . . . . . . . . . . .  69
-       A.3.2.  PSK Setup Information . . . . . . . . . . . . . . . .  72
-       A.3.3.  Auth Setup Information  . . . . . . . . . . . . . . .  75
-       A.3.4.  AuthPSK Setup Information . . . . . . . . . . . . . .  78
-     A.4.  DHKEM(P-256, HKDF-SHA256), HKDF-SHA512, AES-128-GCM . . .  81
-       A.4.1.  Base Setup Information  . . . . . . . . . . . . . . .  81
+     12.2.  Informative References . . . . . . . . . . . . . . . . .  42
+   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  45
+   Appendix B.  Test Vectors . . . . . . . . . . . . . . . . . . . .  45
+     B.1.  DHKEM(X25519, HKDF-SHA256), HKDF-SHA256, AES-128-GCM  . .  46
+       B.1.1.  Base Setup Information  . . . . . . . . . . . . . . .  46
+       B.1.2.  PSK Setup Information . . . . . . . . . . . . . . . .  49
+       B.1.3.  Auth Setup Information  . . . . . . . . . . . . . . .  52
+       B.1.4.  AuthPSK Setup Information . . . . . . . . . . . . . .  55
+     B.2.  DHKEM(X25519, HKDF-SHA256), HKDF-SHA256,
+           ChaCha20Poly1305  . . . . . . . . . . . . . . . . . . . .  58
+       B.2.1.  Base Setup Information  . . . . . . . . . . . . . . .  58
+       B.2.2.  PSK Setup Information . . . . . . . . . . . . . . . .  61
+       B.2.3.  Auth Setup Information  . . . . . . . . . . . . . . .  64
+       B.2.4.  AuthPSK Setup Information . . . . . . . . . . . . . .  67
+     B.3.  DHKEM(P-256, HKDF-SHA256), HKDF-SHA256, AES-128-GCM . . .  70
+       B.3.1.  Base Setup Information  . . . . . . . . . . . . . . .  70
+       B.3.2.  PSK Setup Information . . . . . . . . . . . . . . . .  73
+       B.3.3.  Auth Setup Information  . . . . . . . . . . . . . . .  76
+       B.3.4.  AuthPSK Setup Information . . . . . . . . . . . . . .  79
+     B.4.  DHKEM(P-256, HKDF-SHA256), HKDF-SHA512, AES-128-GCM . . .  82
 
 
 
@@ -170,41 +170,41 @@ Barnes, et al.            Expires 14 July 2022                  [Page 3]
 Internet-Draft                    HPKE                      January 2022
 
 
-       A.4.2.  PSK Setup Information . . . . . . . . . . . . . . . .  84
-       A.4.3.  Auth Setup Information  . . . . . . . . . . . . . . .  87
-       A.4.4.  AuthPSK Setup Information . . . . . . . . . . . . . .  90
-     A.5.  DHKEM(P-256, HKDF-SHA256), HKDF-SHA256,
-           ChaCha20Poly1305  . . . . . . . . . . . . . . . . . . . .  93
-       A.5.1.  Base Setup Information  . . . . . . . . . . . . . . .  93
-       A.5.2.  PSK Setup Information . . . . . . . . . . . . . . . .  96
-       A.5.3.  Auth Setup Information  . . . . . . . . . . . . . . .  99
-       A.5.4.  AuthPSK Setup Information . . . . . . . . . . . . . . 102
-     A.6.  DHKEM(P-521, HKDF-SHA512), HKDF-SHA512, AES-256-GCM . . . 105
-       A.6.1.  Base Setup Information  . . . . . . . . . . . . . . . 105
-       A.6.2.  PSK Setup Information . . . . . . . . . . . . . . . . 108
-       A.6.3.  Auth Setup Information  . . . . . . . . . . . . . . . 111
-       A.6.4.  AuthPSK Setup Information . . . . . . . . . . . . . . 114
-     A.7.  DHKEM(X25519, HKDF-SHA256), HKDF-SHA256, Export-Only
-           AEAD  . . . . . . . . . . . . . . . . . . . . . . . . . . 117
-       A.7.1.  Base Setup Information  . . . . . . . . . . . . . . . 117
-       A.7.2.  PSK Setup Information . . . . . . . . . . . . . . . . 119
-       A.7.3.  Auth Setup Information  . . . . . . . . . . . . . . . 120
-       A.7.4.  AuthPSK Setup Information . . . . . . . . . . . . . . 122
-   Appendix B.  Acknowledgements . . . . . . . . . . . . . . . . . . 124
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 124
+       B.4.1.  Base Setup Information  . . . . . . . . . . . . . . .  82
+       B.4.2.  PSK Setup Information . . . . . . . . . . . . . . . .  85
+       B.4.3.  Auth Setup Information  . . . . . . . . . . . . . . .  88
+       B.4.4.  AuthPSK Setup Information . . . . . . . . . . . . . .  91
+     B.5.  DHKEM(P-256, HKDF-SHA256), HKDF-SHA256,
+           ChaCha20Poly1305  . . . . . . . . . . . . . . . . . . . .  94
+       B.5.1.  Base Setup Information  . . . . . . . . . . . . . . .  94
+       B.5.2.  PSK Setup Information . . . . . . . . . . . . . . . .  97
+       B.5.3.  Auth Setup Information  . . . . . . . . . . . . . . . 100
+       B.5.4.  AuthPSK Setup Information . . . . . . . . . . . . . . 103
+     B.6.  DHKEM(P-521, HKDF-SHA512), HKDF-SHA512, AES-256-GCM . . . 106
+       B.6.1.  Base Setup Information  . . . . . . . . . . . . . . . 106
+       B.6.2.  PSK Setup Information . . . . . . . . . . . . . . . . 109
+       B.6.3.  Auth Setup Information  . . . . . . . . . . . . . . . 112
+       B.6.4.  AuthPSK Setup Information . . . . . . . . . . . . . . 115
+     B.7.  DHKEM(X25519, HKDF-SHA256), HKDF-SHA256, Export-Only
+           AEAD  . . . . . . . . . . . . . . . . . . . . . . . . . . 118
+       B.7.1.  Base Setup Information  . . . . . . . . . . . . . . . 118
+       B.7.2.  PSK Setup Information . . . . . . . . . . . . . . . . 120
+       B.7.3.  Auth Setup Information  . . . . . . . . . . . . . . . 121
+       B.7.4.  AuthPSK Setup Information . . . . . . . . . . . . . . 123
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . 125
 
 1.  Introduction
 
    Encryption schemes that combine asymmetric and symmetric algorithms
-   have been specified and practiced since the early days of public-key
+   have been specified and practiced since the early days of public key
    cryptography, e.g., [RFC1421].  Combining the two yields the key
    management advantages of asymmetric cryptography and the performance
    benefits of symmetric cryptography.  The traditional combination has
    been "encrypt the symmetric key with the public key."  "Hybrid"
-   public-key encryption (HPKE) schemes, specified here, take a
+   public key encryption (HPKE) schemes, specified here, take a
    different approach: "generate the symmetric key and its encapsulation
    with the public key."  Specifically, encrypted messages convey an
-   encryption key encapsulated with a public-key scheme, along with one
+   encryption key encapsulated with a public key scheme, along with one
    or more arbitrary-sized ciphertexts encrypted using that key.  This
    type of public key encryption has many applications in practice,
    including Messaging Layer Security [I-D.ietf-mls-protocol] and TLS
@@ -227,8 +227,8 @@ Internet-Draft                    HPKE                      January 2022
 
 
    Currently, there are numerous competing and non-interoperable
-   standards and variants for hybrid encryption, mostly based on
-   Elliptic Curve Integrated Encryption Schemes (ECIES), including ANSI
+   standards and variants for hybrid encryption, mostly variants on the
+   Elliptic Curve Integrated Encryption Scheme (ECIES), including ANSI
    X9.63 (ECIES) [ANSI], IEEE 1363a [IEEE1363], ISO/IEC 18033-2 [ISO],
    and SECG SEC 1 [SECG].  See [MAEA10] for a thorough comparison.  All
    these existing schemes have problems, e.g., because they rely on
@@ -240,7 +240,7 @@ Internet-Draft                    HPKE                      January 2022
    functions provided by the collection of schemes above but specified
    with sufficient clarity that they can be interoperably implemented.
    The HPKE construction defined herein is secure against (adaptive)
-   chosen ciphertext attacks (IND-CCA2 secure) under classical
+   chosen ciphertext attacks (IND-CCA2-secure) under classical
    assumptions about the underlying primitives [HPKEAnalysis]
    [ABHKLR20].  A summary of these analyses is in Section 9.1.
 
@@ -282,10 +282,10 @@ Barnes, et al.            Expires 14 July 2022                  [Page 5]
 Internet-Draft                    HPKE                      January 2022
 
 
-   *  I2OSP(n, w): Convert nonnegative integer n to a w-length, big-
+   *  I2OSP(n, w): Convert non-negative integer n to a w-length, big-
       endian byte string, as described in [RFC8017].
 
-   *  OS2IP(x): Convert byte string x to a nonnegative integer, as
+   *  OS2IP(x): Convert byte string x to a non-negative integer, as
       described in [RFC8017], assuming big-endian byte order.
 
    *  concat(x0, ..., xN): Concatenation of byte strings. concat(0x01,
@@ -404,7 +404,7 @@ Internet-Draft                    HPKE                      January 2022
       recover a private key.  This function can raise a DeserializeError
       error upon skXm deserialization failure.
 
-   A _ciphersuite_ is a triple (KEM, KDF, AEAD), containing a choice of
+   A _ciphersuite_ is a triple (KEM, KDF, AEAD) containing a choice of
    algorithm for each primitive.
 
    A set of algorithm identifiers for concrete instantiations of these
@@ -420,7 +420,7 @@ Internet-Draft                    HPKE                      January 2022
    key, assuming it is stored along with the private key object.
 
    The following two functions are defined to facilitate domain
-   separation of KDF calls, as well as context binding:
+   separation of KDF calls as well as context binding:
 
    def LabeledExtract(salt, label, ikm):
      labeled_ikm = concat("HPKE-v1", suite_id, label, ikm)
@@ -450,7 +450,7 @@ Barnes, et al.            Expires 14 July 2022                  [Page 8]
 Internet-Draft                    HPKE                      January 2022
 
 
-   *  DH(skX, pkY): Perform a noninteractive Diffie-Hellman exchange
+   *  DH(skX, pkY): Perform a non-interactive Diffie-Hellman exchange
       using the private key skX and public key pkY to produce a Diffie-
       Hellman shared secret of length Ndh. This function can raise a
       ValidationError as described in Section 7.1.4.
@@ -549,11 +549,11 @@ Internet-Draft                    HPKE                      January 2022
    Ndh of the Diffie-Hellman shared secret is equal to 32, 48, and 66,
    respectively, corresponding to the x-coordinate of the resulting
    elliptic curve point [IEEE1363].  For X25519 and X448, the size Ndh
-   of is equal to 32 and 56, respectively (see [RFC7748], Section 5).
+   is equal to 32 and 56, respectively (see [RFC7748], Section 5).
 
    It is important to note that the AuthEncap() and AuthDecap()
    functions of the DHKEM variants defined in this document are
-   vulnerable to key compromise impersonation (KCI).  This means the
+   vulnerable to key-compromise impersonation (KCI).  This means the
 
 
 
@@ -630,7 +630,7 @@ Internet-Draft                    HPKE                      January 2022
    private parameters (enc, psk_id, etc.) are transported between the
    sender and the recipient by some application making use of HPKE.
    Moreover, a recipient with more than one public key needs some way of
-   determining which of its public keys were used for the encapsulation
+   determining which of its public keys was used for the encapsulation
    operation.  As an example, applications may send this information
    alongside a ciphertext from the sender to the recipient.
    Specification of such a mechanism is left to the application.  See
@@ -691,7 +691,7 @@ Internet-Draft                    HPKE                      January 2022
 
    In the Auth and AuthPSK modes, the recipient is assured that the
    sender held the private key skS.  This assurance is limited for the
-   DHKEM variants defined in this document because of key compromise
+   DHKEM variants defined in this document because of key-compromise
    impersonation, as described in Section 4.1 and Section 9.1.  If in
    the PSK and AuthPSK modes, the psk and psk_id arguments are provided
    as required, then the recipient is assured that the sender held the
@@ -849,9 +849,10 @@ Internet-Draft                    HPKE                      January 2022
    is because AuthDecap(enc, skR, pkS) produces the correct KEM shared
    secret only if the encapsulated value enc was produced by
    AuthEncap(pkR, skS), where skS is the private key corresponding to
-   pkS.  In other words, at most two entities (precisely two in the case
-   of DHKEM) could have produced this secret, so if the recipient is at
-   most one, then the sender is the other with overwhelming probability.
+   pkS.  In other words, at most two entities (precisely two, in the
+   case of DHKEM) could have produced this secret, so if the recipient
+   is at most one, then the sender is the other with overwhelming
+   probability.
 
    The primary difference from the base case is that the calls to
    Encap() and Decap() are replaced with calls to AuthEncap() and
@@ -882,10 +883,9 @@ Internet-Draft                    HPKE                      January 2022
 5.1.4.  Authentication Using Both a PSK and an Asymmetric Key
 
    This mode is a straightforward combination of the PSK and
-   authenticated modes.  The PSK is passed through to the key schedule,
-   as in the former, and we use the authenticated KEM variants, as in
-   the latter.
-
+   authenticated modes.  Like the PSK mode, a PSK is provided as input
+   to the key schedule, and like the authenticated mode, authenticated
+   KEM variants are used.
 
 
 
@@ -915,32 +915,32 @@ Internet-Draft                    HPKE                      January 2022
 5.2.  Encryption and Decryption
 
    HPKE allows multiple encryption operations to be done based on a
-   given setup transaction.  Since the public-key operations involved in
+   given setup transaction.  Since the public key operations involved in
    setup are typically more expensive than symmetric encryption or
    decryption, this allows applications to amortize the cost of the
-   public-key operations, reducing the overall overhead.
+   public key operations, reducing the overall overhead.
 
-   However, in order to avoid nonce reuse, this encryption must be
+   In order to avoid nonce reuse, however, this encryption must be
    stateful.  Each of the setup procedures above produces a role-
-   specific context object that stores the AEAD and Secret Export
+   specific context object that stores the AEAD and secret export
    parameters.  The AEAD parameters consist of:
 
-   *  the AEAD algorithm in use,
+   *  The AEAD algorithm in use
 
-   *  a secret key,
+   *  A secret key
 
-   *  a base nonce base_nonce, and
+   *  A base nonce base_nonce
 
-   *  a sequence number (initially 0).
+   *  A sequence number (initially 0)
 
-   The Secret Export parameters consist of:
+   The secret export parameters consist of:
 
-   *  the HPKE ciphersuite in use and
+   *  The HPKE ciphersuite in use and
 
-   *  an exporter_secret used for the Secret Export interface (see
-      Section 5.3).
+   *  An exporter_secret used for the secret export interface (see
+      Section 5.3)
 
-   All these parameters, except the AEAD sequence number, are constant.
+   All these parameters except the AEAD sequence number are constant.
    The sequence number provides nonce uniqueness: The nonce used for
    each encryption or decryption operation is the result of XORing
    base_nonce with the current sequence number, encoded as a big-endian
@@ -954,14 +954,14 @@ Barnes, et al.            Expires 14 July 2022                 [Page 17]
 Internet-Draft                    HPKE                      January 2022
 
 
-   left with zero) but MUST raise an error if the sequence number
+   left with zero), but MUST raise an error if the sequence number
    overflows.  The AEAD algorithm produces ciphertext that is Nt bytes
    longer than the plaintext.  Nt = 16 for AEAD algorithms defined in
    this document.
 
-   Encryption is unidirectional from the sender to the recipient.  The
-   sender's context can encrypt a plaintext pt with associated data aad
-   as follows:
+   Encryption is unidirectional from sender to recipient.  The sender's
+   context can encrypt a plaintext pt with associated data aad as
+   follows:
 
    def ContextS.Seal(aad, pt):
      ct = Seal(self.key, self.ComputeNonce(self.seq), aad, pt)
@@ -994,7 +994,7 @@ Internet-Draft                    HPKE                      January 2022
    The sender's context MUST NOT be used for decryption.  Similarly, the
    recipient's context MUST NOT be used for encryption.  Higher-level
    protocols reusing the HPKE key exchange for more general purposes can
-   derive separate keying material as needed using use the Secret Export
+   derive separate keying material as needed using use the secret export
    interface; see Section 5.3 and Section 9.8 for more details.
 
    It is up to the application to ensure that encryptions and
@@ -1165,9 +1165,9 @@ Internet-Draft                    HPKE                      January 2022
 7.1.1.  SerializePublicKey and DeserializePublicKey
 
    For P-256, P-384, and P-521, the SerializePublicKey() function of the
-   KEM performs the uncompressed elliptic-curve-point-to-octet-string
+   KEM performs the uncompressed Elliptic-Curve-Point-to-Octet-String
    conversion according to [SECG].  DeserializePublicKey() performs the
-   uncompressed octet-string-to-elliptic-curve-point conversion.
+   uncompressed Octet-String-to-Elliptic-Curve-Point conversion.
 
 
 
@@ -1189,7 +1189,7 @@ Internet-Draft                    HPKE                      January 2022
 
    As per [SECG], P-256, P-384, and P-521 private keys are field
    elements in the scalar field of the curve being used.  For this
-   section, and for Section 7.1.3, it is assumed that implementers of
+   section, and for Section 7.1.3, it is assumed that implementors of
    ECDH over these curves use an integer representation of private keys
    that is compatible with the OS2IP() function.
 
@@ -1198,8 +1198,8 @@ Internet-Draft                    HPKE                      January 2022
    according to [SECG].  If the private key is an integer outside the
    range [0, order-1], where order is the order of the curve being used,
    the private key MUST be reduced to its representative in [0, order-1]
-   before being serialized.  DeserializePrivateKey() performs the octet-
-   string-to-field-element conversion according to [SECG].
+   before being serialized.  DeserializePrivateKey() performs the Octet-
+   String-to-Field-Element conversion according to [SECG].
 
    For X25519 and X448, private keys are identical to their byte string
    representation, so little processing has to be done.  The
@@ -1209,7 +1209,7 @@ Internet-Draft                    HPKE                      January 2022
    decodeScalar25519() and decodeScalar448() functions defined in
    Section 5 of [RFC7748].
 
-   To catch invalid keys early on, implementers of DHKEMs SHOULD check
+   To catch invalid keys early on, implementors of DHKEMs SHOULD check
    that deserialized private keys are not equivalent to 0 (mod order),
    where order is the order of the DH group.  Note that this property is
    trivially true for X25519 and X448 groups, since clamped values can
@@ -1219,8 +1219,8 @@ Internet-Draft                    HPKE                      January 2022
 
    The keys that DeriveKeyPair() produces have only as much entropy as
    the provided input keying material.  For a given KEM, the ikm
-   parameter given to DeriveKeyPair() SHOULD have a length of at least
-   Nsk, and SHOULD have at least Nsk bytes of entropy.
+   parameter given to DeriveKeyPair() SHOULD have length at least Nsk,
+   and SHOULD have at least Nsk bytes of entropy.
 
    All invocations of KDF functions (such as LabeledExtract or
    LabeledExpand) in any DHKEM's DeriveKeyPair() function use the
@@ -1254,15 +1254,16 @@ Internet-Draft                    HPKE                      January 2022
    order is the order of the curve being used (see Section D.1.2 of
    [NISTCurves]), and is listed below for completeness.
 
-   P-256:  0xffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc6
-      32551
+   P-256:
+   0xffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632551
 
-   P-384:  0xffffffffffffffffffffffffffffffffffffffffffffffffc7634d81f43
-      72ddf581a0db248b0a77aecec196accc52973
+   P-384:
+   0xffffffffffffffffffffffffffffffffffffffffffffffffc7634d81f4372ddf
+     581a0db248b0a77aecec196accc52973
 
-   P-521:  0x01fffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-      ffffffffa51868783bf2f966b7fcc0148f709a5d03bb5c9b8899c47aebb6fb71e9
-      1386409
+   P-521:
+   0x01ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+     fa51868783bf2f966b7fcc0148f709a5d03bb5c9b8899c47aebb6fb71e91386409
 
    bitmask is defined to be 0xFF for P-256 and P-384, and 0x01 for
    P-521.  The precise likelihood of DeriveKeyPair() failing with
@@ -1277,7 +1278,6 @@ Internet-Draft                    HPKE                      January 2022
      dkp_prk = LabeledExtract("", "dkp_prk", ikm)
      sk = LabeledExpand(dkp_prk, "sk", "", Nsk)
      return (sk, pk(sk))
-
 
 
 
@@ -1300,7 +1300,7 @@ Internet-Draft                    HPKE                      January 2022
    ValidationError.
 
    For P-256, P-384 and P-521, senders and recipients MUST perform
-   partial public-key validation on all public key inputs, as defined in
+   partial public key validation on all public key inputs, as defined in
    Section 5.6.2.3.4 of [keyagreement].  This includes checking that the
    coordinates are in the correct range, that the point is on the curve,
    and that the point is not the point at infinity.  Additionally,
@@ -1525,7 +1525,7 @@ Internet-Draft                    HPKE                      January 2022
    produce invalid output if given the wrong sender public key.  This
    error is not detectable until subsequent AEAD decryption.
 
-   The errors in this document are meant as a guide for implementers.
+   The errors in this document are meant as a guide for implementors.
    They are not an exhaustive list of all the errors an implementation
    might emit.  For example, future KEMs might have internal failure
    cases, or an implementation might run out of memory.
@@ -1559,7 +1559,7 @@ Internet-Draft                    HPKE                      January 2022
    secrets of senders and recipients.  The desired security goals are
    detailed below:
 
-   *  Message secrecy: confidentiality of the sender's messages against
+   *  Message secrecy: Confidentiality of the sender's messages against
       chosen ciphertext attacks
 
 
@@ -1570,11 +1570,11 @@ Barnes, et al.            Expires 14 July 2022                 [Page 28]
 Internet-Draft                    HPKE                      January 2022
 
 
-   *  Export key secrecy: indistinguishability of each export secret
+   *  Export key secrecy: Indistinguishability of each export secret
       from a uniformly random bitstring of equal length, i.e.,
       Context.Export is a variable-length PRF
 
-   *  Sender authentication: proof of sender origin for PSK, Auth, and
+   *  Sender authentication: Proof of sender origin for PSK, Auth, and
       AuthPSK modes
 
    These security goals are expected to hold for any honest sender and
@@ -1600,7 +1600,7 @@ Internet-Draft                    HPKE                      January 2022
    sender private key skS and the pre-shared key are not both
    compromised.
 
-   Besides forward secrecy and key compromise impersonation, which are
+   Besides forward secrecy and key-compromise impersonation, which are
    highlighted in this section because of their particular cryptographic
    importance, HPKE has other non-goals that are described in
    Section 9.7: no tolerance of message reordering or loss, no downgrade
@@ -1608,9 +1608,9 @@ Internet-Draft                    HPKE                      January 2022
    protection against bad ephemeral randomness.  Section 9.7 suggests
    application-level mitigations for some of them.
 
-9.1.1.  Key Compromise Impersonation
+9.1.1.  Key-Compromise Impersonation
 
-   The DHKEM variants defined in this document are vulnerable to key
+   The DHKEM variants defined in this document are vulnerable to key-
    compromise impersonation attacks [BJM97], which means that sender
    authentication cannot be expected to hold in the Auth mode if the
    recipient private key skR is compromised, and in the AuthPSK mode if
@@ -1626,17 +1626,17 @@ Barnes, et al.            Expires 14 July 2022                 [Page 29]
 Internet-Draft                    HPKE                      January 2022
 
 
-   As shown by [ABHKLR20], key compromise impersonation attacks are
+   As shown by [ABHKLR20], key-compromise impersonation attacks are
    generally possible on HPKE because KEM ciphertexts are not bound to
    HPKE messages.  An adversary who knows a recipient's private key can
    decapsulate an observed KEM ciphertext, compute the key schedule, and
    encrypt an arbitrary message that the recipient will accept as coming
    from the original sender.  Importantly, this is possible even with a
-   KEM that is resistant to key compromise impersonation attacks.  As a
+   KEM that is resistant to key-compromise impersonation attacks.  As a
    result, mitigating this issue requires fundamental changes that are
    out of scope of this specification.
 
-   Applications that require resistance against key compromise
+   Applications that require resistance against key-compromise
    impersonation SHOULD take extra steps to prevent this attack.  One
    possibility is to produce a digital signature over (enc, ct) tuples
    using a sender's private key -- where ct is an AEAD ciphertext
@@ -1649,31 +1649,31 @@ Internet-Draft                    HPKE                      January 2022
    hybrid quantum setting: if a non-quantum-resistant KEM used with HPKE
    is broken by a quantum computer, the security properties are
    preserved through the use of a pre-shared key.  As described in
-   [RFC8696] this assumes that the pre-shared key has not been
-   compromised.
+   Section 7 of [RFC8696] this assumes that the pre-shared key has not
+   been compromised.
 
 9.1.2.  Computational Analysis
 
-   It is shown in [CS01] that a hybrid public-key encryption scheme of
-   essentially the same form as the Base mode described here is IND-CCA2
-   secure as long as the underlying KEM and AEAD schemes are IND-CCA2
-   secure.  Moreover, it is shown in [HHK06] that IND-CCA2 security of
-   the KEM and the data encapsulation mechanism are necessary conditions
-   to achieve IND-CCA2 security for hybrid public-key encryption.  The
-   main difference between the scheme proposed in [CS01] and the Base
-   mode in this document (both named HPKE) is that we interpose some KDF
-   calls between the KEM and the AEAD.  Analyzing the HPKE Base mode
-   instantiation in this document therefore requires verifying that the
-   additional KDF calls do not cause the IND-CCA2 property to fail, as
-   well as verifying the additional export key secrecy property.
+   It is shown in [CS01] that a hybrid public key encryption scheme of
+   essentially the same form as the Base mode described here is IND-
+   CCA2-secure as long as the underlying KEM and AEAD schemes are IND-
+   CCA2-secure.  Moreover, it is shown in [HHK06] that IND-CCA2 security
+   of the KEM and the data encapsulation mechanism are necessary
+   conditions to achieve IND-CCA2 security for hybrid public key
+   encryption.  The main difference between the scheme proposed in
+   [CS01] and the Base mode in this document (both named HPKE) is that
+   we interpose some KDF calls between the KEM and the AEAD.  Analyzing
+   the HPKE Base mode instantiation in this document therefore requires
+   verifying that the additional KDF calls do not cause the IND-CCA2
+   property to fail, as well as verifying the additional export key
+   secrecy property.
 
-   Analysis of the PSK, Auth, and AuthPSK modes defined in this document
-   additionally requires verifying the sender authentication property.
-   While the PSK mode just adds supplementary keying material to the key
-   schedule, the Auth and AuthPSK modes make use of a nonstandard
-   authenticated KEM construction.  Generally, the authenticated modes
-   of HPKE can be viewed and analyzed as flavors of signcryption
-   [SigncryptionDZ10].
+
+
+
+
+
+
 
 
 
@@ -1681,6 +1681,14 @@ Barnes, et al.            Expires 14 July 2022                 [Page 30]
 
 Internet-Draft                    HPKE                      January 2022
 
+
+   Analysis of the PSK, Auth, and AuthPSK modes defined in this document
+   additionally requires verifying the sender authentication property.
+   While the PSK mode just adds supplementary keying material to the key
+   schedule, the Auth and AuthPSK modes make use of a non-standard
+   authenticated KEM construction.  Generally, the authenticated modes
+   of HPKE can be viewed and analyzed as flavors of signcryption
+   [SigncryptionDZ10].
 
    A preliminary computational analysis of all HPKE modes has been done
    in [HPKEAnalysis], indicating asymptotic security for the case where
@@ -1696,7 +1704,7 @@ Internet-Draft                    HPKE                      January 2022
 
    In particular, the KDFs and DH groups defined in this document (see
    Section 7.2 and Section 7.1) satisfy these properties when used as
-   specified.  The analysis in [HPKEAnalysis] demonstrates that, under
+   specified.  The analysis in [HPKEAnalysis] demonstrates that under
    these constraints, HPKE continues to provide IND-CCA2 security, and
    provides the additional properties noted above.  Also, the analysis
    confirms the expected properties hold under the different key
@@ -1722,14 +1730,6 @@ Internet-Draft                    HPKE                      January 2022
 
                                   Table 6
 
-   If non-DH-based KEMs are to be used with HPKE, further analysis will
-   be necessary to prove their security.  The results from [CS01]
-   provide some indication that any IND-CCA2 secure KEM will suffice
-   here, but are not conclusive given the differences in the schemes.
-
-   A detailed computational analysis of HPKE's Auth mode single-shot
-   encryption API has been done in [ABHKLR20].  The paper defines
-   security notions for authenticated KEMs and for authenticated public
 
 
 
@@ -1738,13 +1738,21 @@ Barnes, et al.            Expires 14 July 2022                 [Page 31]
 Internet-Draft                    HPKE                      January 2022
 
 
+   If non-DH-based KEMs are to be used with HPKE, further analysis will
+   be necessary to prove their security.  The results from [CS01]
+   provide some indication that any IND-CCA2-secure KEM will suffice
+   here, but are not conclusive given the differences in the schemes.
+
+   A detailed computational analysis of HPKE's Auth mode single-shot
+   encryption API has been done in [ABHKLR20].  The paper defines
+   security notions for authenticated KEMs and for authenticated public
    key encryption, using the outsider and insider security terminology
    known from signcryption [SigncryptionDZ10].  The analysis proves that
    DHKEM's AuthEncap()/AuthDecap() interface fulfills these notions for
-   all Diffie-Hellman groups specified in this document, and indicates
-   exact security bounds, under the assumption that the gap Diffie-
-   Hellman (GDH) problem is hard in the appropriate subgroup [GAP], and
-   that HKDF can be modeled as a random oracle.
+   all Diffie-Hellman groups specified in this document.  The analysis
+   also provides exact security bounds, under the assumptions that the
+   gap Diffie-Hellman (GDH) problem is hard in the appropriate subgroup
+   [GAP], and that HKDF can be modeled as a random oracle.
 
    Further, [ABHKLR20] proves composition theorems, showing that HPKE's
    Auth mode fulfills the security notions of authenticated public key
@@ -1778,14 +1786,6 @@ Internet-Draft                    HPKE                      January 2022
    theorems, in combination with a post-quantum-secure authenticated
    KEM, guarantee the post-quantum security of HPKE's Auth mode.
 
-   In future work, the analysis from [ABHKLR20] can be extended to cover
-   HPKE's other modes and desired security properties.  The hybrid
-   quantum-resistance property described above, which is achieved by
-   using the PSK or AuthPSK mode, is not proven in [HPKEAnalysis]
-   because this analysis requires the random oracle model; in a quantum
-   setting, this model needs adaption to, for example, the quantum
-   random oracle model.
-
 
 
 
@@ -1793,6 +1793,14 @@ Barnes, et al.            Expires 14 July 2022                 [Page 32]
 
 Internet-Draft                    HPKE                      January 2022
 
+
+   In future work, the analysis from [ABHKLR20] can be extended to cover
+   HPKE's other modes and desired security properties.  The hybrid
+   quantum-resistance property described above, which is achieved by
+   using the PSK or AuthPSK mode, is not proven in [HPKEAnalysis]
+   because this analysis requires the random oracle model; in a quantum
+   setting, this model needs adaption to, for example, the quantum
+   random oracle model.
 
 9.2.  Security Requirements on a KEM Used within HPKE
 
@@ -1809,7 +1817,7 @@ Internet-Draft                    HPKE                      January 2022
 
    As mentioned in Section 9, [CS01] provides some indications that if
    the KEM's Encap()/Decap() interface (which is used in the Base and
-   PSK modes) is IND-CCA2 secure, HPKE is able to satisfy its desired
+   PSK modes) is IND-CCA2-secure, HPKE is able to satisfy its desired
    security properties.  An appropriate definition of IND-CCA2 security
    for KEMs can be found in [CS01] and [BHK09].
 
@@ -1818,7 +1826,7 @@ Internet-Draft                    HPKE                      January 2022
    The analysis of HPKE's Auth mode single-shot encryption API in
    [ABHKLR20] provides composition theorems that guarantee that HPKE's
    Auth mode achieves its desired security properties if the KEM's
-   AuthEncap()/AuthDecap() interface satisfies multiuser Outsider-CCA,
+   AuthEncap()/AuthDecap() interface satisfies multi-user Outsider-CCA,
    Outsider-Auth, and Insider-CCA security, as defined in the same
    paper.
 
@@ -1834,14 +1842,6 @@ Internet-Draft                    HPKE                      January 2022
    An Insider-Auth security notion would formalize authentication of the
    KEM shared secret in case the recipient private key is known or
    chosen by the adversary.  (If the sender private key is known or
-   chosen by the adversary, it can create KEM ciphertexts in the name of
-   the sender).  Because of the generic attack on an analogous Insider-
-   Auth security notion of HPKE described in Section 9.1, a definition
-   of Insider-Auth security for KEMs used within HPKE is not useful.
-
-
-
-
 
 
 
@@ -1849,6 +1849,11 @@ Barnes, et al.            Expires 14 July 2022                 [Page 33]
 
 Internet-Draft                    HPKE                      January 2022
 
+
+   chosen by the adversary, it can create KEM ciphertexts in the name of
+   the sender).  Because of the generic attack on an analogous Insider-
+   Auth security notion of HPKE described in Section 9.1, a definition
+   of Insider-Auth security for KEMs used within HPKE is not useful.
 
 9.2.3.  KEM Key Reuse
 
@@ -1858,12 +1863,12 @@ Internet-Draft                    HPKE                      January 2022
    The randomness used in Encap() and AuthEncap() to generate the KEM
    shared secret or its encapsulation MUST NOT be reused elsewhere.
 
-   As a sender or recipient, KEM key pair works with all modes; it can
-   be used with multiple modes in parallel.  HPKE is constructed to be
-   secure in such settings due to domain separation using the suite_id
-   variable.  However, there is no formal proof of security at the time
-   of writing for using multiple modes in parallel; [HPKEAnalysis] and
-   [ABHKLR20] only analyze isolated modes.
+   Since a KEM key pair belonging to a sender or recipient works with
+   all modes, it can be used with multiple modes in parallel.  HPKE is
+   constructed to be secure in such settings due to domain separation
+   using the suite_id variable.  However, there is no formal proof of
+   security at the time of writing for using multiple modes in parallel;
+   [HPKEAnalysis] and [ABHKLR20] only analyze isolated modes.
 
 9.3.  Security Requirements on a KDF
 
@@ -1874,7 +1879,7 @@ Internet-Draft                    HPKE                      January 2022
 
 9.4.  Security Requirements on an AEAD
 
-   All AEADs MUST be IND-CCA2 secure, as is currently true for all AEADs
+   All AEADs MUST be IND-CCA2-secure, as is currently true for all AEADs
    listed in Section 7.3.
 
 9.5.  Pre-Shared Key Recommendations
@@ -1883,18 +1888,13 @@ Internet-Draft                    HPKE                      January 2022
    entropy and SHOULD be of length Nh bytes or longer.  Using a PSK
    longer than 32 bytes but shorter than Nh bytes is permitted.
 
-   HPKE is specified to use HKDF as the key derivation function.  HKDF
-   is not designed to slow down dictionary attacks; see [RFC5869].
-   Thus, HPKE's PSK mechanism is not suitable for use with a low-entropy
-   password as the PSK; in scenarios in which the adversary knows the
-   KEM shared secret shared_secret and has access to an oracle that
-   allows distinguishing between a good and a wrong PSK, it can perform
-   PSK-recovering attacks.  This oracle can be the decryption operation
-   on a captured HPKE ciphertext or any other recipient behavior that is
-   observably different when using a wrong PSK.  The adversary knows the
-   KEM shared secret shared_secret if it knows all KEM private keys of
-   one participant.  In the PSK mode, this is trivially the case if the
-   adversary acts as the sender.
+
+
+
+
+
+
+
 
 
 
@@ -1905,6 +1905,19 @@ Barnes, et al.            Expires 14 July 2022                 [Page 34]
 
 Internet-Draft                    HPKE                      January 2022
 
+
+   HPKE is specified to use HKDF as its key derivation function.  HKDF
+   is not designed to slow down dictionary attacks (see [RFC5869]).
+   Thus, HPKE's PSK mechanism is not suitable for use with a low-entropy
+   password as the PSK: In scenarios in which the adversary knows the
+   KEM shared secret shared_secret and has access to an oracle that
+   distinguishes between a good and a wrong PSK, it can perform PSK-
+   recovering attacks.  This oracle can be the decryption operation on a
+   captured HPKE ciphertext or any other recipient behavior that is
+   observably different when using a wrong PSK.  The adversary knows the
+   KEM shared secret shared_secret if it knows all KEM private keys of
+   one participant.  In the PSK mode, this is trivially the case if the
+   adversary acts as the sender.
 
    To recover a lower entropy PSK, an attacker in this scenario can
    trivially perform a dictionary attack.  Given a set S of possible PSK
@@ -1932,15 +1945,23 @@ Internet-Draft                    HPKE                      January 2022
    HPKE use separate input domains.  This justifies modeling them as
    independent functions even if instantiated by the same KDF.  This
    domain separation between DHKEM and the remainder of HPKE is achieved
-   by the suite_id values in LabeledExtract() and LabeledExpand(); the
-   values used (KEM... in DHKEM and HPKE... in the remainder of HPKE)
-   are prefix-free (a set is prefix-free if no element is a prefix of
-   another within the set).
+   by using prefix-free sets of suite_id values in LabeledExtract() and
+   LabeledExpand() (KEM... in DHKEM and HPKE... in the remainder of
+   HPKE).  Recall that a set is prefix-free if no element is a prefix of
+   another within the set.
 
    Future KEM instantiations MUST ensure, should Extract() and Expand()
    be used internally, that they can be modeled as functions independent
    from the invocations of Extract() and Expand() in the remainder of
    HPKE.  One way to ensure this is by using LabeledExtract() and
+
+
+
+Barnes, et al.            Expires 14 July 2022                 [Page 35]
+
+Internet-Draft                    HPKE                      January 2022
+
+
    LabeledExpand() with a suite_id as defined in Section 4, which will
    ensure input domain separation, as outlined above.  Particular
    attention needs to be paid if the KEM directly invokes functions that
@@ -1951,24 +1972,13 @@ Internet-Draft                    HPKE                      January 2022
    HPKE's KeySchedule() this is avoided by using Extract() instead of
    Hash() on the arbitrary-length inputs info and psk_id.
 
-
-
-
-
-
-
-Barnes, et al.            Expires 14 July 2022                 [Page 35]
-
-Internet-Draft                    HPKE                      January 2022
-
-
    The string literal "HPKE-v1" used in LabeledExtract() and
    LabeledExpand() ensures that any secrets derived in HPKE are bound to
    the scheme's name and version, even when possibly derived from the
    same Diffie-Hellman or KEM shared secret as in another scheme or
    version.
 
-9.7.  Application Embedding and Non-goals
+9.7.  Application Embedding and Non-Goals
 
    HPKE is designed to be a fairly low-level mechanism.  As a result, it
    assumes that certain properties are provided by the application in
@@ -1986,26 +1996,16 @@ Internet-Draft                    HPKE                      January 2022
    for multiple invocations of Open() / Seal() on the same context MUST
    enforce the ordering property described above.
 
-   The ordering requirements of this character are usually fulfilled by
+   Ordering requirements of this character are usually fulfilled by
    providing a sequence number in the framing of encrypted messages.
    Whatever information is used to determine the ordering of HPKE-
-   encrypted messages SHOULD be included in the additional authenticated
-   data (AAD) passed to ContextS.Seal() and ContextR.Open().  The
-   specifics of this scheme are up to the application.
+   encrypted messages SHOULD be included in the AAD passed to
+   ContextS.Seal() and ContextR.Open().  The specifics of this scheme
+   are up to the application.
 
    HPKE is not tolerant of lost messages.  Applications MUST be able to
    detect when a message has been lost.  When an unrecoverable loss is
    detected, the application MUST discard any associated HPKE context.
-
-9.7.2.  Downgrade Prevention
-
-   HPKE assumes that the sender and recipient agree on what algorithms
-   to use.  Depending on how these algorithms are negotiated, it may be
-   possible for an intermediary to force the two parties to use
-   suboptimal algorithms.
-
-
-
 
 
 
@@ -2017,6 +2017,13 @@ Barnes, et al.            Expires 14 July 2022                 [Page 36]
 
 Internet-Draft                    HPKE                      January 2022
 
+
+9.7.2.  Downgrade Prevention
+
+   HPKE assumes that the sender and recipient agree on what algorithms
+   to use.  Depending on how these algorithms are negotiated, it may be
+   possible for an intermediary to force the two parties to use
+   suboptimal algorithms.
 
 9.7.3.  Replay Protection
 
@@ -2059,13 +2066,6 @@ Internet-Draft                    HPKE                      January 2022
    randomness is to combine ephemeral randomness with a local long-term
    secret that has been generated securely, as described in [RFC8937].
 
-9.7.6.  Hiding Plaintext Length
-
-   AEAD ciphertexts produced by HPKE do not hide the plaintext length.
-   Applications requiring this level of privacy should use a suitable
-   padding mechanism.  See [I-D.ietf-tls-esni] and [RFC8467] for
-   examples of protocol-specific padding policies.
-
 
 
 
@@ -2074,12 +2074,19 @@ Barnes, et al.            Expires 14 July 2022                 [Page 37]
 Internet-Draft                    HPKE                      January 2022
 
 
+9.7.6.  Hiding Plaintext Length
+
+   AEAD ciphertexts produced by HPKE do not hide the plaintext length.
+   Applications requiring this level of privacy should use a suitable
+   padding mechanism.  See [I-D.ietf-tls-esni] and [RFC8467] for
+   examples of protocol-specific padding policies.
+
 9.8.  Bidirectional Encryption
 
    As discussed in Section 5.2, HPKE encryption is unidirectional from
    sender to recipient.  Applications that require bidirectional
-   encryption can derive necessary keying material with the Secret
-   Export interface Section 5.3.  The type and length of such keying
+   encryption can derive necessary keying material with the secret
+   export interface Section 5.3.  The type and length of such keying
    material depends on the application use case.
 
    As an example, if an application needs AEAD encryption from the
@@ -2097,17 +2104,17 @@ Internet-Draft                    HPKE                      January 2022
    particular, in the Base mode, there is no authentication of the
    remote party at all.  Even in the Auth mode, where the remote party
    has proven that they hold a specific private key, this authentication
-   is still subject to key compromise impersonation, as discussed in
+   is still subject to key-compromise impersonation, as discussed in
    Section 9.1.1.
 
 9.9.  Metadata Protection
 
    The authenticated modes of HPKE (PSK, Auth, and AuthPSK) require that
    the recipient know what key material to use for the sender.  This can
-   be signaled in applications by sending the PSK ID (psk_id) and/or the
-   sender's public key (pkS).  However, these values themselves might be
-   considered sensitive, since, in a given application context, they
-   might identify the sender.
+   be signaled in applications by sending the PSK ID (psk_id above) and/
+   or the sender's public key (pkS).  However, these values themselves
+   might be considered sensitive, since, in a given application context,
+   they might identify the sender.
 
    An application that wishes to protect these metadata values without
    requiring further provisioning of keys can use an additional instance
@@ -2116,13 +2123,6 @@ Internet-Draft                    HPKE                      January 2022
    send (enc2, ciphertext2, enc, ciphertext), where (enc2, ciphertext2)
    represent the encryption of the psk_id and pkS values.
 
-   The cost of this approach is an additional KEM operation, each for
-   the sender and the recipient.  A potential lower-cost approach
-   (involving only symmetric operations) would be available if the
-   nonce-protection schemes in [BNT19] could be extended to cover other
-   metadata.  However, this construction would require further analysis.
-
-
 
 
 Barnes, et al.            Expires 14 July 2022                 [Page 38]
@@ -2130,11 +2130,17 @@ Barnes, et al.            Expires 14 July 2022                 [Page 38]
 Internet-Draft                    HPKE                      January 2022
 
 
+   The cost of this approach is an additional KEM operation each for the
+   sender and the recipient.  A potential lower-cost approach (involving
+   only symmetric operations) would be available if the nonce-protection
+   schemes in [BNT19] could be extended to cover other metadata.
+   However, this construction would require further analysis.
+
 10.  Message Encoding
 
    This document does not specify a wire format encoding for HPKE
    messages.  Applications that adopt HPKE must therefore specify an
-   unambiguous encoding mechanism that includes, minimally, the
+   unambiguous encoding mechanism that includes, minimally: the
    encapsulated value enc, ciphertext value(s) (and order if there are
    multiple), and any info values that are not implicit.  One example of
    a non-implicit value is the recipient public key used for
@@ -2143,10 +2149,10 @@ Internet-Draft                    HPKE                      January 2022
 
    The AEAD interface used in this document is based on [RFC5116], which
    produces and consumes a single ciphertext value.  As discussed in
-   [RFC5116], this ciphertext value contains the encrypted plaintext, as
-   well as any authentication data encoded in a manner described by the
+   [RFC5116], this ciphertext value contains the encrypted plaintext as
+   well as any authentication data, encoded in a manner described by the
    individual AEAD scheme.  Some implementations are not structured in
-   this way, instead provide a separate ciphertext and authentication
+   this way, instead providing a separate ciphertext and authentication
    tag.  When such AEAD implementations are used in HPKE
    implementations, the HPKE implementation must combine these inputs
    into a single ciphertext value within Seal() and parse them out
@@ -2168,6 +2174,18 @@ Internet-Draft                    HPKE                      January 2022
    All these registries are under "Hybrid Public Key Encryption", and
    administered under a Specification Required policy [RFC8126]
 
+
+
+
+
+
+
+
+Barnes, et al.            Expires 14 July 2022                 [Page 39]
+
+Internet-Draft                    HPKE                      January 2022
+
+
 11.1.  KEM Identifiers
 
    The "HPKE KEM Identifiers" registry lists identifiers for key
@@ -2177,33 +2195,26 @@ Internet-Draft                    HPKE                      January 2022
 
    Template:
 
-   *  Value: the two-byte identifier for the algorithm
+   *  Value: The two-byte identifier for the algorithm
 
+   *  KEM: The name of the algorithm
 
-
-Barnes, et al.            Expires 14 July 2022                 [Page 39]
-
-Internet-Draft                    HPKE                      January 2022
-
-
-   *  KEM: the name of the algorithm
-
-   *  Nsecret: the length in bytes of a KEM shared secret produced by
+   *  Nsecret: The length in bytes of a KEM shared secret produced by
       the algorithm
 
-   *  Nenc: the length in bytes of an encoded encapsulated key produced
+   *  Nenc: The length in bytes of an encoded encapsulated key produced
       by the algorithm
 
-   *  Npk: the length in bytes of an encoded public key for the
+   *  Npk: The length in bytes of an encoded public key for the
       algorithm
 
-   *  Nsk: the length in bytes of an encoded private key for the
+   *  Nsk: The length in bytes of an encoded private key for the
       algorithm
 
-   *  Auth: a boolean indicating if this algorithm provides the
+   *  Auth: A boolean indicating if this algorithm provides the
       AuthEncap()/AuthDecap() interface
 
-   *  Reference: where this algorithm is defined
+   *  Reference: Where this algorithm is defined
 
    Initial contents: Provided in Table 2
 
@@ -2215,13 +2226,21 @@ Internet-Draft                    HPKE                      January 2022
 
    Template:
 
-   *  Value: the two-byte identifier for the algorithm
+   *  Value: The two-byte identifier for the algorithm
 
-   *  KDF: the name of the algorithm
+   *  KDF: The name of the algorithm
 
-   *  Nh: the output size of the Extract function in bytes
+   *  Nh: The output size of the Extract function in bytes
 
-   *  Reference: where this algorithm is defined
+   *  Reference: Where this algorithm is defined
+
+
+
+
+Barnes, et al.            Expires 14 July 2022                 [Page 40]
+
+Internet-Draft                    HPKE                      January 2022
+
 
    Initial contents: Provided in Table 3
 
@@ -2234,26 +2253,18 @@ Internet-Draft                    HPKE                      January 2022
 
    Template:
 
+   *  Value: The two-byte identifier for the algorithm
 
+   *  AEAD: The name of the algorithm
 
+   *  Nk: The length in bytes of a key for this algorithm
 
-Barnes, et al.            Expires 14 July 2022                 [Page 40]
-
-Internet-Draft                    HPKE                      January 2022
+   *  Nn: The length in bytes of a nonce for this algorithm
 
-
-   *  Value: the two-byte identifier for the algorithm
-
-   *  AEAD: the name of the algorithm
-
-   *  Nk: the length in bytes of a key for this algorithm
-
-   *  Nn: the length in bytes of a nonce for this algorithm
-
-   *  Nt: the length in bytes of an authentication tag for this
+   *  Nt: The length in bytes of an authentication tag for this
       algorithm
 
-   *  Reference: where this algorithm is defined
+   *  Reference: Where this algorithm is defined
 
    Initial contents: Provided in Table 5
 
@@ -2280,6 +2291,13 @@ Internet-Draft                    HPKE                      January 2022
               RFC 8126, DOI 10.17487/RFC8126, June 2017,
               <https://www.rfc-editor.org/info/rfc8126>.
 
+
+
+Barnes, et al.            Expires 14 July 2022                 [Page 41]
+
+Internet-Draft                    HPKE                      January 2022
+
+
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
@@ -2289,14 +2307,6 @@ Internet-Draft                    HPKE                      January 2022
    [ABHKLR20] Alwen, J., Blanchet, B., Hauck, E., Kiltz, E., Lipp, B.,
               and D. Riepel, "Analysing the HPKE Standard", 2020,
               <https://eprint.iacr.org/2020/1499>.
-
-
-
-
-Barnes, et al.            Expires 14 July 2022                 [Page 41]
-
-Internet-Draft                    HPKE                      January 2022
-
 
    [ANSI]     American National Standards Institute, "ANSI X9.63 Public
               Key Cryptography for the Financial Services Industry --
@@ -2335,6 +2345,15 @@ Internet-Draft                    HPKE                      January 2022
               DOI 10.6028/nist.sp.800-38d, 2007,
               <https://doi.org/10.6028/nist.sp.800-38d>.
 
+
+
+
+
+Barnes, et al.            Expires 14 July 2022                 [Page 42]
+
+Internet-Draft                    HPKE                      January 2022
+
+
    [HHK06]    Herranz, J., Hofheinz, D., and E. Kiltz, "Some
               (in)sufficient conditions for secure hybrid encryption",
               2006, <https://eprint.iacr.org/2006/265>.
@@ -2346,14 +2365,6 @@ Internet-Draft                    HPKE                      January 2022
    [I-D.ietf-mls-protocol]
               Barnes, R., Beurdouche, B., Robert, R., Millican, J.,
               Omara, E., and K. Cohn-Gordon, "The Messaging Layer
-
-
-
-Barnes, et al.            Expires 14 July 2022                 [Page 42]
-
-Internet-Draft                    HPKE                      January 2022
-
-
               Security (MLS) Protocol", Work in Progress, Internet-
               Draft, draft-ietf-mls-protocol-12, 11 October 2021,
               <https://www.ietf.org/archive/id/draft-ietf-mls-protocol-
@@ -2390,6 +2401,15 @@ Internet-Draft                    HPKE                      January 2022
               DOI 10.6028/nist.sp.800-56ar3, April 2018,
               <https://doi.org/10.6028/nist.sp.800-56ar3>.
 
+
+
+
+
+Barnes, et al.            Expires 14 July 2022                 [Page 43]
+
+Internet-Draft                    HPKE                      January 2022
+
+
    [LGR20]    Len, J., Grubbs, P., and T. Ristenpart, "Partitioning
               Oracle Attacks", 2021,
               <https://eprint.iacr.org/2020/1491>.
@@ -2401,14 +2421,6 @@ Internet-Draft                    HPKE                      January 2022
 
    [NaCl]     "Public-key authenticated encryption: crypto_box", 2019,
               <https://nacl.cr.yp.to/box.html>.
-
-
-
-
-Barnes, et al.            Expires 14 July 2022                 [Page 43]
-
-Internet-Draft                    HPKE                      January 2022
-
 
    [NISTCurves]
               "Digital Signature Standard (DSS)", National Institute of
@@ -2447,6 +2459,13 @@ Internet-Draft                    HPKE                      January 2022
               DOI 10.17487/RFC8696, December 2019,
               <https://www.rfc-editor.org/info/rfc8696>.
 
+
+
+Barnes, et al.            Expires 14 July 2022                 [Page 44]
+
+Internet-Draft                    HPKE                      January 2022
+
+
    [RFC8937]  Cremers, C., Garratt, L., Smyshlyaev, S., Sullivan, N.,
               and C. Wood, "Randomness Improvements for Security
               Protocols", RFC 8937, DOI 10.17487/RFC8937, October 2020,
@@ -2455,16 +2474,6 @@ Internet-Draft                    HPKE                      January 2022
    [SECG]     "Elliptic Curve Cryptography, Standards for Efficient
               Cryptography Group, ver. 2", 2009,
               <https://secg.org/sec1-v2.pdf>.
-
-
-
-
-
-
-Barnes, et al.            Expires 14 July 2022                 [Page 44]
-
-Internet-Draft                    HPKE                      January 2022
-
 
    [SigncryptionDZ10]
               "Practical Signcryption", Information Security
@@ -2477,7 +2486,18 @@ Internet-Draft                    HPKE                      January 2022
               hpke/blob/5f503c564da00b0687b3de75f1dfbdfc4079ad31/test-
               vectors.json>.
 
-Appendix A.  Test Vectors
+Appendix A.  Acknowledgements
+
+   The authors would like to thank Joel Alwen, Jean-Philippe Aumasson,
+   David Benjamin, Benjamin Beurdouche, Bruno Blanchet, Frank Denis,
+   Stephen Farrell, Scott Fluhrer, Eduard Hauck, Scott Hollenbeck, Kevin
+   Jacobs, Burt Kaliski, Eike Kiltz, Julia Len, John Mattsson,
+   Christopher Patton, Doreen Riepel, Raphael Robert, Michael Rosenberg,
+   Michael Scott, Martin Thomson, Steven Valdez, Riad Wahby, and other
+   contributors in the CFRG for helpful feedback that greatly improved
+   this document.
+
+Appendix B.  Test Vectors
 
    Each section below contains test vectors for a single HPKE
    ciphersuite and contains the following values:
@@ -2492,6 +2512,15 @@ Appendix A.  Test Vectors
        SerializePrivateKey(skX) and pkXm = SerializePublicKey(pkX).  For
        applicable modes, the shared PSK and PSK identifier are also
        included.
+
+
+
+
+
+Barnes, et al.            Expires 14 July 2022                 [Page 45]
+
+Internet-Draft                    HPKE                      January 2022
+
 
    2.  Context creation intermediate values and outputs: This includes
        the KEM outputs enc and shared_secret used to create the context,
@@ -2513,18 +2542,41 @@ Appendix A.  Test Vectors
    These test vectors are also available in JSON format at
    [TestVectors].
 
+B.1.  DHKEM(X25519, HKDF-SHA256), HKDF-SHA256, AES-128-GCM
+
+B.1.1.  Base Setup Information
 
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 45]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Barnes, et al.            Expires 14 July 2022                 [Page 46]
 
 Internet-Draft                    HPKE                      January 2022
 
-
-A.1.  DHKEM(X25519, HKDF-SHA256), HKDF-SHA256, AES-128-GCM
-
-A.1.1.  Base Setup Information
 
    mode: 0
    kem_id: 32
@@ -2557,7 +2609,7 @@ A.1.1.  Base Setup Information
    exporter_secret:
    45ff1c2e220db587171952c0592d5f5ebe103f1561a2614e38f2ffd47e99e3f8
 
-A.1.1.1.  Encryptions
+B.1.1.1.  Encryptions
 
 
 
@@ -2573,7 +2625,11 @@ A.1.1.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 46]
+
+
+
+
+Barnes, et al.            Expires 14 July 2022                 [Page 47]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -2620,7 +2676,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: 957f9800542b0b8891badb026d79cc54597cb2d225b54c00c5238c25d05c30e3
    fbeda97d2e0e1aba483a2df9f2
 
-A.1.1.2.  Exported Values
+B.1.1.2.  Exported Values
 
 
 
@@ -2629,7 +2685,7 @@ A.1.1.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 47]
+Barnes, et al.            Expires 14 July 2022                 [Page 48]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -2649,7 +2705,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    e9e43065102c3836401bed8c3c3c75ae46be1639869391d62c61f1ec7af54931
 
-A.1.2.  PSK Setup Information
+B.1.2.  PSK Setup Information
 
 
 
@@ -2685,7 +2741,7 @@ A.1.2.  PSK Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 48]
+Barnes, et al.            Expires 14 July 2022                 [Page 49]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -2724,7 +2780,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    3d76025dbbedc49448ec3f9080a1abab6b06e91c0b11ad23c912f043a0ee7655
 
-A.1.2.1.  Encryptions
+B.1.2.1.  Encryptions
 
 
 
@@ -2741,7 +2797,7 @@ A.1.2.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 49]
+Barnes, et al.            Expires 14 July 2022                 [Page 50]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -2788,7 +2844,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: c5bf246d4a790a12dcc9eed5eae525081e6fb541d5849e9ce8abd92a3bc15517
    76bea16b4a518f23e237c14b59
 
-A.1.2.2.  Exported Values
+B.1.2.2.  Exported Values
 
 
 
@@ -2797,7 +2853,7 @@ A.1.2.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 50]
+Barnes, et al.            Expires 14 July 2022                 [Page 51]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -2817,7 +2873,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    8aff52b45a1be3a734bc7a41e20b4e055ad4c4d22104b0c20285a7c4302401cd
 
-A.1.3.  Auth Setup Information
+B.1.3.  Auth Setup Information
 
 
 
@@ -2853,7 +2909,7 @@ A.1.3.  Auth Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 51]
+Barnes, et al.            Expires 14 July 2022                 [Page 52]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -2895,7 +2951,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    ee1a093e6e1c393c162ea98fdf20560c75909653550540a2700511b65c88c6f1
 
-A.1.3.1.  Encryptions
+B.1.3.1.  Encryptions
 
 
 
@@ -2909,7 +2965,7 @@ A.1.3.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 52]
+Barnes, et al.            Expires 14 July 2022                 [Page 53]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -2956,7 +3012,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: 42fa248a0e67ccca688f2b1d13ba4ba84755acf764bd797c8f7ba3b9b1dc3330
    326f8d172fef6003c79ec72319
 
-A.1.3.2.  Exported Values
+B.1.3.2.  Exported Values
 
 
 
@@ -2965,7 +3021,7 @@ A.1.3.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 53]
+Barnes, et al.            Expires 14 July 2022                 [Page 54]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -2985,7 +3041,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    5a0131813abc9a522cad678eb6bafaabc43389934adb8097d23c5ff68059eb64
 
-A.1.4.  AuthPSK Setup Information
+B.1.4.  AuthPSK Setup Information
 
 
 
@@ -3021,7 +3077,7 @@ A.1.4.  AuthPSK Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 54]
+Barnes, et al.            Expires 14 July 2022                 [Page 55]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3066,7 +3122,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    f048d55eacbf60f9c6154bd4021774d1075ebf963c6adc71fa846f183ab2dde6
 
-A.1.4.1.  Encryptions
+B.1.4.1.  Encryptions
 
 
 
@@ -3077,7 +3133,7 @@ A.1.4.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 55]
+Barnes, et al.            Expires 14 July 2022                 [Page 56]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3124,7 +3180,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: 13239bab72e25e9fd5bb09695d23c90a24595158b99127505c8a9ff9f127e0d6
    57f71af59d67d4f4971da028f9
 
-A.1.4.2.  Exported Values
+B.1.4.2.  Exported Values
 
 
 
@@ -3133,7 +3189,7 @@ A.1.4.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 56]
+Barnes, et al.            Expires 14 July 2022                 [Page 57]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3153,11 +3209,9 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    a30c20370c026bbea4dca51cb63761695132d342bae33a6a11527d3e7679436d
 
-A.2.  DHKEM(X25519, HKDF-SHA256), HKDF-SHA256, ChaCha20Poly1305
+B.2.  DHKEM(X25519, HKDF-SHA256), HKDF-SHA256, ChaCha20Poly1305
 
-A.2.1.  Base Setup Information
-
-
+B.2.1.  Base Setup Information
 
 
 
@@ -3189,7 +3243,9 @@ A.2.1.  Base Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 57]
+
+
+Barnes, et al.            Expires 14 July 2022                 [Page 58]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3226,7 +3282,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    a3b010d4994890e2c6968a36f64470d3c824c8f5029942feb11e7a74b2921922
 
-A.2.1.1.  Encryptions
+B.2.1.1.  Encryptions
 
 
 
@@ -3245,7 +3301,7 @@ A.2.1.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 58]
+Barnes, et al.            Expires 14 July 2022                 [Page 59]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3292,7 +3348,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: 7a4a13e9ef23978e2c520fd4d2e757514ae160cd0cd05e556ef692370ca53076
    214c0c40d4c728d6ed9e727a5b
 
-A.2.1.2.  Exported Values
+B.2.1.2.  Exported Values
 
 
 
@@ -3301,7 +3357,7 @@ A.2.1.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 59]
+Barnes, et al.            Expires 14 July 2022                 [Page 60]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3321,7 +3377,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    5acb09211139c43b3090489a9da433e8a30ee7188ba8b0a9a1ccf0c229283e53
 
-A.2.2.  PSK Setup Information
+B.2.2.  PSK Setup Information
 
 
 
@@ -3357,7 +3413,7 @@ A.2.2.  PSK Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 60]
+Barnes, et al.            Expires 14 July 2022                 [Page 61]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3397,7 +3453,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    73b506dc8b6b4269027f80b0362def5cbb57ee50eed0c2873dac9181f453c5ac
 
-A.2.2.1.  Encryptions
+B.2.2.1.  Encryptions
 
 
 
@@ -3413,7 +3469,7 @@ A.2.2.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 61]
+Barnes, et al.            Expires 14 July 2022                 [Page 62]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3460,7 +3516,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: c567ae1c3f0f75abe1dd9e4532b422600ed4a6e5b9484dafb1e43ab9f5fd662b
    28c00e2e81d3cde955dae7e218
 
-A.2.2.2.  Exported Values
+B.2.2.2.  Exported Values
 
 
 
@@ -3469,7 +3525,7 @@ A.2.2.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 62]
+Barnes, et al.            Expires 14 July 2022                 [Page 63]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3489,7 +3545,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    ad40e3ae14f21c99bfdebc20ae14ab86f4ca2dc9a4799d200f43a25f99fa78ae
 
-A.2.3.  Auth Setup Information
+B.2.3.  Auth Setup Information
 
 
 
@@ -3525,7 +3581,7 @@ A.2.3.  Auth Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 63]
+Barnes, et al.            Expires 14 July 2022                 [Page 64]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3568,7 +3624,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    be2d93b82071318cdb88510037cf504344151f2f9b9da8ab48974d40a2251dd7
 
-A.2.3.1.  Encryptions
+B.2.3.1.  Encryptions
 
 
 
@@ -3581,7 +3637,7 @@ A.2.3.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 64]
+Barnes, et al.            Expires 14 July 2022                 [Page 65]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3628,7 +3684,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: 3be14e8b3bbd1028cf2b7d0a691dbbeff71321e7dec92d3c2cfb30a0994ab246
    af76168480285a60037b4ba13a
 
-A.2.3.2.  Exported Values
+B.2.3.2.  Exported Values
 
 
 
@@ -3637,7 +3693,7 @@ A.2.3.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 65]
+Barnes, et al.            Expires 14 July 2022                 [Page 66]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3657,7 +3713,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    1df39dc5dd60edcbf5f9ae804e15ada66e885b28ed7929116f768369a3f950ee
 
-A.2.4.  AuthPSK Setup Information
+B.2.4.  AuthPSK Setup Information
 
 
 
@@ -3693,7 +3749,7 @@ A.2.4.  AuthPSK Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 66]
+Barnes, et al.            Expires 14 July 2022                 [Page 67]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3739,7 +3795,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    7c6cc1bb98993cd93e2599322247a58fd41fdecd3db895fb4c5fd8d6bbe606b5
 
-A.2.4.1.  Encryptions
+B.2.4.1.  Encryptions
 
 
 
@@ -3749,7 +3805,7 @@ A.2.4.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 67]
+Barnes, et al.            Expires 14 July 2022                 [Page 68]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3796,7 +3852,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: 9b7f84224922d2a9edd7b2c2057f3bcf3a547f17570575e626202e593bfdd99e
    9878a1af9e41ded58c7fb77d2f
 
-A.2.4.2.  Exported Values
+B.2.4.2.  Exported Values
 
 
 
@@ -3805,7 +3861,7 @@ A.2.4.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 68]
+Barnes, et al.            Expires 14 July 2022                 [Page 69]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3825,11 +3881,9 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    d3bae066aa8da27d527d85c040f7dd6ccb60221c902ee36a82f70bcd62a60ee4
 
-A.3.  DHKEM(P-256, HKDF-SHA256), HKDF-SHA256, AES-128-GCM
+B.3.  DHKEM(P-256, HKDF-SHA256), HKDF-SHA256, AES-128-GCM
 
-A.3.1.  Base Setup Information
-
-
+B.3.1.  Base Setup Information
 
 
 
@@ -3861,7 +3915,9 @@ A.3.1.  Base Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 69]
+
+
+Barnes, et al.            Expires 14 July 2022                 [Page 70]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3897,7 +3953,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    14ad94af484a7ad3ef40e9f3be99ecc6fa9036df9d4920548424df127ee0d99f
 
-A.3.1.1.  Encryptions
+B.3.1.1.  Encryptions
 
 
 
@@ -3917,7 +3973,7 @@ A.3.1.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 70]
+Barnes, et al.            Expires 14 July 2022                 [Page 71]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3964,7 +4020,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: 10f179686aa2caec1758c8e554513f16472bd0a11e2a907dde0b212cbe87d74f
    367f8ffe5e41cd3e9962a6afb2
 
-A.3.1.2.  Exported Values
+B.3.1.2.  Exported Values
 
 
 
@@ -3973,7 +4029,7 @@ A.3.1.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 71]
+Barnes, et al.            Expires 14 July 2022                 [Page 72]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -3993,7 +4049,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    d8f1ea7942adbba7412c6d431c62d01371ea476b823eb697e1f6e6cae1dab85a
 
-A.3.2.  PSK Setup Information
+B.3.2.  PSK Setup Information
 
 
 
@@ -4029,7 +4085,7 @@ A.3.2.  PSK Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 72]
+Barnes, et al.            Expires 14 July 2022                 [Page 73]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4068,7 +4124,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    895a723a1eab809804973a53c0ee18ece29b25a7555a4808277ad2651d66d705
 
-A.3.2.1.  Encryptions
+B.3.2.1.  Encryptions
 
 
 
@@ -4085,7 +4141,7 @@ A.3.2.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 73]
+Barnes, et al.            Expires 14 July 2022                 [Page 74]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4132,7 +4188,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: faf985208858b1253b97b60aecd28bc18737b58d1242370e7703ec33b73a4c31
    a1afee300e349adef9015bbbfd
 
-A.3.2.2.  Exported Values
+B.3.2.2.  Exported Values
 
 
 
@@ -4141,7 +4197,7 @@ A.3.2.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 74]
+Barnes, et al.            Expires 14 July 2022                 [Page 75]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4161,7 +4217,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    164e02144d44b607a7722e58b0f4156e67c0c2874d74cf71da6ca48a4cbdc5e0
 
-A.3.3.  Auth Setup Information
+B.3.3.  Auth Setup Information
 
 
 
@@ -4197,7 +4253,7 @@ A.3.3.  Auth Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 75]
+Barnes, et al.            Expires 14 July 2022                 [Page 76]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4239,7 +4295,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    f152759972660eb0e1db880835abd5de1c39c8e9cd269f6f082ed80e28acb164
 
-A.3.3.1.  Encryptions
+B.3.3.1.  Encryptions
 
 
 
@@ -4253,7 +4309,7 @@ A.3.3.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 76]
+Barnes, et al.            Expires 14 July 2022                 [Page 77]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4300,7 +4356,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: 28e874512f8940fafc7d06135e7589f6b4198bc0f3a1c64702e72c9e6abaf9f0
    5cb0d2f11b03a517898815c934
 
-A.3.3.2.  Exported Values
+B.3.3.2.  Exported Values
 
 
 
@@ -4309,7 +4365,7 @@ A.3.3.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 77]
+Barnes, et al.            Expires 14 July 2022                 [Page 78]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4329,7 +4385,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    14fe634f95ca0d86e15247cca7de7ba9b73c9b9deb6437e1c832daf7291b79d5
 
-A.3.4.  AuthPSK Setup Information
+B.3.4.  AuthPSK Setup Information
 
 
 
@@ -4365,7 +4421,7 @@ A.3.4.  AuthPSK Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 78]
+Barnes, et al.            Expires 14 July 2022                 [Page 79]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4410,7 +4466,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    3f479020ae186788e4dfd4a42a21d24f3faabb224dd4f91c2b2e5e9524ca27b2
 
-A.3.4.1.  Encryptions
+B.3.4.1.  Encryptions
 
 
 
@@ -4421,7 +4477,7 @@ A.3.4.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 79]
+Barnes, et al.            Expires 14 July 2022                 [Page 80]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4468,7 +4524,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: f380e19d291e12c5e378b51feb5cd50f6d00df6cb2af8393794c4df342126c2e
    29633fe7e8ce49587531affd4d
 
-A.3.4.2.  Exported Values
+B.3.4.2.  Exported Values
 
 
 
@@ -4477,7 +4533,7 @@ A.3.4.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 80]
+Barnes, et al.            Expires 14 July 2022                 [Page 81]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4497,11 +4553,9 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    18ee4d001a9d83a4c67e76f88dd747766576cac438723bad0700a910a4d717e6
 
-A.4.  DHKEM(P-256, HKDF-SHA256), HKDF-SHA512, AES-128-GCM
+B.4.  DHKEM(P-256, HKDF-SHA256), HKDF-SHA512, AES-128-GCM
 
-A.4.1.  Base Setup Information
-
-
+B.4.1.  Base Setup Information
 
 
 
@@ -4533,7 +4587,9 @@ A.4.1.  Base Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 81]
+
+
+Barnes, et al.            Expires 14 July 2022                 [Page 82]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4572,7 +4628,7 @@ Internet-Draft                    HPKE                      January 2022
    ca61e26d494f4855dff0d0165f27ce57756f7f16baca006539bb8e4518987ba61048
    0ac03efa8
 
-A.4.1.1.  Encryptions
+B.4.1.1.  Encryptions
 
 
 
@@ -4589,7 +4645,7 @@ A.4.1.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 82]
+Barnes, et al.            Expires 14 July 2022                 [Page 83]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4636,7 +4692,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: 62092672f5328a0dde095e57435edf7457ace60b26ee44c9291110ec135cb0e1
    4b85594e4fea11247d937deb62
 
-A.4.1.2.  Exported Values
+B.4.1.2.  Exported Values
 
 
 
@@ -4645,7 +4701,7 @@ A.4.1.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 83]
+Barnes, et al.            Expires 14 July 2022                 [Page 84]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4665,7 +4721,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    93fb9411430b2cfa2cf0bed448c46922a5be9beff20e2e621df7e4655852edbc
 
-A.4.2.  PSK Setup Information
+B.4.2.  PSK Setup Information
 
 
 
@@ -4701,7 +4757,7 @@ A.4.2.  PSK Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 84]
+Barnes, et al.            Expires 14 July 2022                 [Page 85]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4743,7 +4799,7 @@ Internet-Draft                    HPKE                      January 2022
    fe4d4352790171ed2b2c4756ad7f5a730ba336c8f1edd0089d8331192058c385bae3
    9c7cc8b57
 
-A.4.2.1.  Encryptions
+B.4.2.1.  Encryptions
 
 
 
@@ -4757,7 +4813,7 @@ A.4.2.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 85]
+Barnes, et al.            Expires 14 July 2022                 [Page 86]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4804,7 +4860,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: cc161f5a179831d456d119d2f2c19a6817289c75d1c61cd37ac8a450acd9efba
    02e0ac00d128c17855931ff69a
 
-A.4.2.2.  Exported Values
+B.4.2.2.  Exported Values
 
 
 
@@ -4813,7 +4869,7 @@ A.4.2.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 86]
+Barnes, et al.            Expires 14 July 2022                 [Page 87]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4833,7 +4889,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    2f6d4f7a18ec48de1ef4469f596aada4afdf6d79b037ed3c07e0118f8723bffc
 
-A.4.3.  Auth Setup Information
+B.4.3.  Auth Setup Information
 
 
 
@@ -4869,7 +4925,7 @@ A.4.3.  Auth Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 87]
+Barnes, et al.            Expires 14 July 2022                 [Page 88]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4914,7 +4970,7 @@ Internet-Draft                    HPKE                      January 2022
    24f60def17f910d7928575434d7f991b1f19d3e8358b8278ff59ced0d5eed4774cec
    72e12766e
 
-A.4.3.1.  Encryptions
+B.4.3.1.  Encryptions
 
 
 
@@ -4925,7 +4981,7 @@ A.4.3.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 88]
+Barnes, et al.            Expires 14 July 2022                 [Page 89]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -4972,7 +5028,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: 247da592cc4ce834a94de2c79f5730ee49342470a021e4a4bc2bb77c53b17413
    e94d94f57b4fdaedcf97cfe7b1
 
-A.4.3.2.  Exported Values
+B.4.3.2.  Exported Values
 
 
 
@@ -4981,7 +5037,7 @@ A.4.3.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 89]
+Barnes, et al.            Expires 14 July 2022                 [Page 90]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5001,7 +5057,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    70c405c707102fd0041ea716090753be47d68d238b111d542846bd0d84ba907c
 
-A.4.4.  AuthPSK Setup Information
+B.4.4.  AuthPSK Setup Information
 
 
 
@@ -5037,7 +5093,7 @@ A.4.4.  AuthPSK Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 90]
+Barnes, et al.            Expires 14 July 2022                 [Page 91]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5085,7 +5141,7 @@ Internet-Draft                    HPKE                      January 2022
    7d8b54e9b1e547244c3602bdd86d5a788a8443befea0a7658002b23f1c96a62a6498
    6fffc511a
 
-A.4.4.1.  Encryptions
+B.4.4.1.  Encryptions
 
 
 
@@ -5093,7 +5149,7 @@ A.4.4.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 91]
+Barnes, et al.            Expires 14 July 2022                 [Page 92]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5140,7 +5196,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: 9f659482ebc52f8303f9eac75656d807ec38ce2e50c72e3078cd13d86b30e3f8
    90690a873277620f8a6a42d836
 
-A.4.4.2.  Exported Values
+B.4.4.2.  Exported Values
 
 
 
@@ -5149,7 +5205,7 @@ A.4.4.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 92]
+Barnes, et al.            Expires 14 July 2022                 [Page 93]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5169,11 +5225,9 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    bed80f2e54f1285895c4a3f3b3625e6206f78f1ed329a0cfb5864f7c139b3c6a
 
-A.5.  DHKEM(P-256, HKDF-SHA256), HKDF-SHA256, ChaCha20Poly1305
+B.5.  DHKEM(P-256, HKDF-SHA256), HKDF-SHA256, ChaCha20Poly1305
 
-A.5.1.  Base Setup Information
-
-
+B.5.1.  Base Setup Information
 
 
 
@@ -5205,7 +5259,9 @@ A.5.1.  Base Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 93]
+
+
+Barnes, et al.            Expires 14 July 2022                 [Page 94]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5242,7 +5298,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    4f9bd9b3a8db7d7c3a5b9d44fdc1f6e37d5d77689ade5ec44a7242016e6aa205
 
-A.5.1.1.  Encryptions
+B.5.1.1.  Encryptions
 
 
 
@@ -5261,7 +5317,7 @@ A.5.1.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 94]
+Barnes, et al.            Expires 14 July 2022                 [Page 95]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5308,7 +5364,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: b45b69d419a9be7219d8c94365b89ad6951caf4576ea4774ea40e9b7047a09d6
    537d1aa2f7c12d6ae4b729b4d0
 
-A.5.1.2.  Exported Values
+B.5.1.2.  Exported Values
 
 
 
@@ -5317,7 +5373,7 @@ A.5.1.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 95]
+Barnes, et al.            Expires 14 July 2022                 [Page 96]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5337,7 +5393,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    477a50d804c7c51941f69b8e32fe8288386ee1a84905fe4938d58972f24ac938
 
-A.5.2.  PSK Setup Information
+B.5.2.  PSK Setup Information
 
 
 
@@ -5373,7 +5429,7 @@ A.5.2.  PSK Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 96]
+Barnes, et al.            Expires 14 July 2022                 [Page 97]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5413,7 +5469,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    754ca00235b245e72d1f722a7718e7145bd113050a2aa3d89586d4cb7514bfdb
 
-A.5.2.1.  Encryptions
+B.5.2.1.  Encryptions
 
 
 
@@ -5429,7 +5485,7 @@ A.5.2.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 97]
+Barnes, et al.            Expires 14 July 2022                 [Page 98]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5476,7 +5532,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: 1ea6326c8098ed0437a553c466550114fb2ca1412cca7de98709b9ccdf19206e
    52c3d39180e2cf62b3e9f4baf4
 
-A.5.2.2.  Exported Values
+B.5.2.2.  Exported Values
 
 
 
@@ -5485,7 +5541,7 @@ A.5.2.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 98]
+Barnes, et al.            Expires 14 July 2022                 [Page 99]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5505,7 +5561,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    6f6fbd0d1c7733f796461b3235a856cc34f676fe61ed509dfc18fa16efe6be78
 
-A.5.3.  Auth Setup Information
+B.5.3.  Auth Setup Information
 
 
 
@@ -5541,7 +5597,7 @@ A.5.3.  Auth Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                 [Page 99]
+Barnes, et al.            Expires 14 July 2022                [Page 100]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5584,7 +5640,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    dba6e307f71769ba11e2c687cc19592f9d436da0c81e772d7a8a9fd28e54355f
 
-A.5.3.1.  Encryptions
+B.5.3.1.  Encryptions
 
 
 
@@ -5597,7 +5653,7 @@ A.5.3.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 100]
+Barnes, et al.            Expires 14 July 2022                [Page 101]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5644,7 +5700,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: e2276ec5047bc4b6ed57d6da7da2fb47a77502f0a30f17d040247c73da336d72
    2bc6c89adf68396a0912c6d152
 
-A.5.3.2.  Exported Values
+B.5.3.2.  Exported Values
 
 
 
@@ -5653,7 +5709,7 @@ A.5.3.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 101]
+Barnes, et al.            Expires 14 July 2022                [Page 102]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5673,7 +5729,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    eb0d312b6263995b4c7761e64b688c215ffd6043ff3bad2368c862784cbe6eff
 
-A.5.4.  AuthPSK Setup Information
+B.5.4.  AuthPSK Setup Information
 
 
 
@@ -5709,7 +5765,7 @@ A.5.4.  AuthPSK Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 102]
+Barnes, et al.            Expires 14 July 2022                [Page 103]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5755,7 +5811,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    600895965755db9c5027f25f039a6e3e506c35b3b7084ce33c4a48d59ee1f0e3
 
-A.5.4.1.  Encryptions
+B.5.4.1.  Encryptions
 
 
 
@@ -5765,7 +5821,7 @@ A.5.4.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 103]
+Barnes, et al.            Expires 14 July 2022                [Page 104]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5812,7 +5868,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: fb857f4185ce5286c1a52431867537204963ea66a3eee8d2a74419fd8751faee
    066d08277ac7880473aa4143ba
 
-A.5.4.2.  Exported Values
+B.5.4.2.  Exported Values
 
 
 
@@ -5821,7 +5877,7 @@ A.5.4.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 104]
+Barnes, et al.            Expires 14 July 2022                [Page 105]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5841,11 +5897,9 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    e01dd49e8bfc3d9216abc1be832f0418adf8b47a7b5a330a7436c31e33d765d7
 
-A.6.  DHKEM(P-521, HKDF-SHA512), HKDF-SHA512, AES-256-GCM
+B.6.  DHKEM(P-521, HKDF-SHA512), HKDF-SHA512, AES-256-GCM
 
-A.6.1.  Base Setup Information
-
-
+B.6.1.  Base Setup Information
 
 
 
@@ -5877,7 +5931,9 @@ A.6.1.  Base Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 105]
+
+
+Barnes, et al.            Expires 14 July 2022                [Page 106]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5928,12 +5984,12 @@ Internet-Draft                    HPKE                      January 2022
    81252d0ee3215388a4455e69086b50b87eb28c169a52f42e71de4ca61c920e7bd24c
    95cc3f992
 
-A.6.1.1.  Encryptions
+B.6.1.1.  Encryptions
 
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 106]
+Barnes, et al.            Expires 14 July 2022                [Page 107]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -5980,7 +6036,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: dbbfc44ae037864e75f136e8b4b4123351d480e6619ae0e0ae437f036f2f8f1e
    f677686323977a1ccbb4b4f16a
 
-A.6.1.2.  Exported Values
+B.6.1.2.  Exported Values
 
 
 
@@ -5989,7 +6045,7 @@ A.6.1.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 107]
+Barnes, et al.            Expires 14 July 2022                [Page 108]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -6009,7 +6065,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    f389beaac6fcf6c0d9376e20f97e364f0609a88f1bc76d7328e9104df8477013
 
-A.6.2.  PSK Setup Information
+B.6.2.  PSK Setup Information
 
    mode: 1
    kem_id: 18
@@ -6045,7 +6101,7 @@ A.6.2.  PSK Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 108]
+Barnes, et al.            Expires 14 July 2022                [Page 109]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -6068,7 +6124,7 @@ Internet-Draft                    HPKE                      January 2022
    63665c705bb140ecba6ce9256be3fad35b4378d41643867454612adfd0542a684b61
    799bf293f
 
-A.6.2.1.  Encryptions
+B.6.2.1.  Encryptions
 
 
 
@@ -6101,7 +6157,7 @@ A.6.2.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 109]
+Barnes, et al.            Expires 14 July 2022                [Page 110]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -6148,7 +6204,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: eecc2173ce1ac14b27ee67041e90ed50b7809926e55861a579949c07f6d26137
    bf9cf0d097f60b5fd2fbf348ec
 
-A.6.2.2.  Exported Values
+B.6.2.2.  Exported Values
 
 
 
@@ -6157,7 +6213,7 @@ A.6.2.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 110]
+Barnes, et al.            Expires 14 July 2022                [Page 111]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -6177,7 +6233,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    0c7cfc0976e25ae7680cf909ae2de1859cd9b679610a14bec40d69b91785b2f6
 
-A.6.3.  Auth Setup Information
+B.6.3.  Auth Setup Information
 
    mode: 2
    kem_id: 18
@@ -6213,7 +6269,7 @@ A.6.3.  Auth Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 111]
+Barnes, et al.            Expires 14 July 2022                [Page 112]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -6243,7 +6299,7 @@ Internet-Draft                    HPKE                      January 2022
    a35d7f534089c87c98b4bacd7bbc6276c4002a74085adcd9019fca6139826b529256
    9cfb7fe47
 
-A.6.3.1.  Encryptions
+B.6.3.1.  Encryptions
 
 
 
@@ -6269,7 +6325,7 @@ A.6.3.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 112]
+Barnes, et al.            Expires 14 July 2022                [Page 113]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -6316,7 +6372,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: 0dfcfc22ea768880b4160fec27ab10c75fb27766c6bb97aed373a9b6eae35d31
    afb08257401075cbb602ac5abb
 
-A.6.3.2.  Exported Values
+B.6.3.2.  Exported Values
 
 
 
@@ -6325,7 +6381,7 @@ A.6.3.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 113]
+Barnes, et al.            Expires 14 July 2022                [Page 114]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -6345,7 +6401,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    620b176d737cf366bcc20d96adb54ec156978220879b67923689e6dca36210ed
 
-A.6.4.  AuthPSK Setup Information
+B.6.4.  AuthPSK Setup Information
 
    mode: 3
    kem_id: 18
@@ -6381,7 +6437,7 @@ A.6.4.  AuthPSK Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 114]
+Barnes, et al.            Expires 14 July 2022                [Page 115]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -6414,7 +6470,7 @@ Internet-Draft                    HPKE                      January 2022
    8a65398406a96ab8b5da3187412b2324089ea16ba4ff7e6f4fe55d281fc8ae5f2049
    032b69ebd
 
-A.6.4.1.  Encryptions
+B.6.4.1.  Encryptions
 
 
 
@@ -6437,7 +6493,7 @@ A.6.4.1.  Encryptions
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 115]
+Barnes, et al.            Expires 14 July 2022                [Page 116]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -6484,7 +6540,7 @@ Internet-Draft                    HPKE                      January 2022
    ct: 24f9d8dadd2107376ccd143f70f9bafcd2b21d8117d45ff327e9a78f603a3260
    6e42a6a8bdb57a852591d20907
 
-A.6.4.2.  Exported Values
+B.6.4.2.  Exported Values
 
 
 
@@ -6493,7 +6549,7 @@ A.6.4.2.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 116]
+Barnes, et al.            Expires 14 July 2022                [Page 117]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -6513,11 +6569,9 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    f8b4e72cefbff4ca6c4eabb8c0383287082cfcbb953d900aed4959afd0017095
 
-A.7.  DHKEM(X25519, HKDF-SHA256), HKDF-SHA256, Export-Only AEAD
+B.7.  DHKEM(X25519, HKDF-SHA256), HKDF-SHA256, Export-Only AEAD
 
-A.7.1.  Base Setup Information
-
-
+B.7.1.  Base Setup Information
 
 
 
@@ -6549,7 +6603,9 @@ A.7.1.  Base Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 117]
+
+
+Barnes, et al.            Expires 14 July 2022                [Page 118]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -6585,7 +6641,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    79dc8e0509cf4a3364ca027e5a0138235281611ca910e435e8ed58167c72f79b
 
-A.7.1.1.  Exported Values
+B.7.1.1.  Exported Values
 
    exporter_context:
    L: 32
@@ -6605,12 +6661,12 @@ A.7.1.1.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 118]
+Barnes, et al.            Expires 14 July 2022                [Page 119]
 
 Internet-Draft                    HPKE                      January 2022
 
 
-A.7.2.  PSK Setup Information
+B.7.2.  PSK Setup Information
 
    mode: 1
    kem_id: 32
@@ -6646,7 +6702,7 @@ A.7.2.  PSK Setup Information
    exporter_secret:
    04261818aeae99d6aba5101bd35ddf3271d909a756adcef0d41389d9ed9ab153
 
-A.7.2.1.  Exported Values
+B.7.2.1.  Exported Values
 
 
 
@@ -6661,7 +6717,7 @@ A.7.2.1.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 119]
+Barnes, et al.            Expires 14 July 2022                [Page 120]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -6681,7 +6737,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    7c9d79876a288507b81a5a52365a7d39cc0fa3f07e34172984f96fec07c44cba
 
-A.7.3.  Auth Setup Information
+B.7.3.  Auth Setup Information
 
 
 
@@ -6717,7 +6773,7 @@ A.7.3.  Auth Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 120]
+Barnes, et al.            Expires 14 July 2022                [Page 121]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -6759,7 +6815,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    276d87e5cb0655c7d3dad95e76e6fc02746739eb9d968955ccf8a6346c97509e
 
-A.7.3.1.  Exported Values
+B.7.3.1.  Exported Values
 
 
 
@@ -6773,7 +6829,7 @@ A.7.3.1.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 121]
+Barnes, et al.            Expires 14 July 2022                [Page 122]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -6793,7 +6849,7 @@ Internet-Draft                    HPKE                      January 2022
    exported_value:
    ff3b0e37a9954247fea53f251b799e2edd35aac7152c5795751a3da424feca73
 
-A.7.4.  AuthPSK Setup Information
+B.7.4.  AuthPSK Setup Information
 
 
 
@@ -6829,7 +6885,7 @@ A.7.4.  AuthPSK Setup Information
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 122]
+Barnes, et al.            Expires 14 July 2022                [Page 123]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -6874,7 +6930,7 @@ Internet-Draft                    HPKE                      January 2022
    exporter_secret:
    695b1faa479c0e0518b6414c3b46e8ef5caea04c0a192246843765ae6a8a78e0
 
-A.7.4.1.  Exported Values
+B.7.4.1.  Exported Values
 
 
 
@@ -6885,7 +6941,7 @@ A.7.4.1.  Exported Values
 
 
 
-Barnes, et al.            Expires 14 July 2022                [Page 123]
+Barnes, et al.            Expires 14 July 2022                [Page 124]
 
 Internet-Draft                    HPKE                      January 2022
 
@@ -6904,17 +6960,6 @@ Internet-Draft                    HPKE                      January 2022
    L: 32
    exported_value:
    84f3466bd5a03bde6444324e63d7560e7ac790da4e5bbab01e7c4d575728c34a
-
-Appendix B.  Acknowledgements
-
-   The authors would like to thank Joel Alwen, Jean-Philippe Aumasson,
-   David Benjamin, Benjamin Beurdouche, Bruno Blanchet, Frank Denis,
-   Stephen Farrell, Scott Fluhrer, Eduard Hauck, Scott Hollenbeck, Kevin
-   Jacobs, Burt Kaliski, Eike Kiltz, Julia Len, John Mattsson,
-   Christopher Patton, Doreen Riepel, Raphael Robert, Michael Rosenberg,
-   Michael Scott, Martin Thomson, Steven Valdez, Riad Wahby, and other
-   contributors in the CFRG for helpful feedback that greatly improved
-   this document.
 
 Authors' Addresses
 
@@ -6936,55 +6981,10 @@ Authors' Addresses
    Email: ietf@benjaminlipp.de
 
 
-
-
-
-
-
-Barnes, et al.            Expires 14 July 2022                [Page 124]
-
-Internet-Draft                    HPKE                      January 2022
-
-
    Christopher A. Wood
    Cloudflare
 
    Email: caw@heapingbits.net
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
