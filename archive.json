@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-11-11T14:59:05.821993+00:00",
+  "timestamp": "2022-01-10T16:47:05.985755+00:00",
   "repo": "cfrg/draft-irtf-cfrg-hpke",
   "labels": [
     {
@@ -18125,6 +18125,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 247,
+      "id": "PR_kwDOC3hbXs4wvs6K",
+      "title": "Truncate test vectors to fit in column format",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/247",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Per the RPC's request.",
+      "createdAt": "2022-01-10T16:46:40Z",
+      "updatedAt": "2022-01-10T16:46:40Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
+      "baseRefName": "master",
+      "baseRefOid": "1b3e563933010db2cd04bdfd64cc2fb4821e3071",
+      "headRepository": "cfrg/draft-irtf-cfrg-hpke",
+      "headRefName": "caw/truncate-vectors",
+      "headRefOid": "e05d8bc938babef98900bf74c9af57adff315d6d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
