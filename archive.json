@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-01-10T16:47:05.985755+00:00",
+  "timestamp": "2022-01-14T15:04:52.665494+00:00",
   "repo": "cfrg/draft-irtf-cfrg-hpke",
   "labels": [
     {
@@ -18131,26 +18131,323 @@
       "id": "PR_kwDOC3hbXs4wvs6K",
       "title": "Truncate test vectors to fit in column format",
       "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/247",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "chris-wood",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Per the RPC's request.",
       "createdAt": "2022-01-10T16:46:40Z",
-      "updatedAt": "2022-01-10T16:46:40Z",
+      "updatedAt": "2022-01-10T16:47:06Z",
       "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
       "baseRefName": "master",
       "baseRefOid": "1b3e563933010db2cd04bdfd64cc2fb4821e3071",
       "headRepository": "cfrg/draft-irtf-cfrg-hpke",
       "headRefName": "caw/truncate-vectors",
       "headRefOid": "e05d8bc938babef98900bf74c9af57adff315d6d",
+      "closedAt": "2022-01-10T16:47:06Z",
+      "mergedAt": "2022-01-10T16:47:06Z",
+      "mergedBy": "chris-wood",
+      "mergeCommit": {
+        "oid": "d0fae32205c3140bf15759d80c83991bd7dd015d"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 248,
+      "id": "PR_kwDOC3hbXs4wwwk9",
+      "title": "RFC Editor proposed edits in AUTH48",
+      "url": "https://github.com/cfrg/draft-irtf-cfrg-hpke/pull/248",
+      "state": "OPEN",
+      "author": "bifurcation",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR is for AUTH48 processing.  At the end, we should have a Markdown file that represents the substance of what will go in RFC 9180.   The first commit imports the RFC editor's changes.  Subsequent commits will reflect the authors' changes on top of those changes.",
+      "createdAt": "2022-01-10T22:14:40Z",
+      "updatedAt": "2022-01-14T00:33:29Z",
+      "baseRepository": "cfrg/draft-irtf-cfrg-hpke",
+      "baseRefName": "master",
+      "baseRefOid": "d0fae32205c3140bf15759d80c83991bd7dd015d",
+      "headRepository": "cfrg/draft-irtf-cfrg-hpke",
+      "headRefName": "auth48",
+      "headRefOid": "bd97b9981898bb0c7efd7ae9b03d3efa79ae039b",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "comments": [
+        {
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Summary of my edits:\r\n* A bunch of commas that were added or removed unnecessarily, including some that made the text non-grammatical (!)\r\n* Re-added hyphens in:\r\n  * non-negative\r\n  * IND-CCA2-secure\r\n  * key-compromise impersonation (this is a term of art, see DOI.10.1007/BFb0024447)\r\n  * non-interactive\r\n* Re-capitalized some SECG algorithms\r\n* Cleared RFC editor comments that have been addressed\r\n* \"implementer\" to \"implementor\"\r\n* Moved Acknowledgements to be the first section in the back matter\r\n* Changed all \"Secret Export\" to \"secret export\"\r\n* Changed all \"public-key\" to \"public key\"\r\n",
+          "createdAt": "2022-01-10T23:23:42Z",
+          "updatedAt": "2022-01-10T23:23:42Z"
+        },
+        {
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@bifurcation pending resolution of @blipp's comments above, I think we can merge this and cut a new XML file for the RPC.",
+          "createdAt": "2022-01-14T00:33:29Z",
+          "updatedAt": "2022-01-14T00:33:29Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOC3hbXs4ykgzn",
+          "commit": {
+            "abbreviatedOid": "92ae219"
+          },
+          "author": "bifurcation",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-10T22:42:58Z",
+          "updatedAt": "2022-01-10T23:22:38Z",
+          "comments": [
+            {
+              "originalPosition": 509,
+              "body": "I'm not sure why the RPC saw fit to change this to a definition list.  It renders more clearly as artwork.",
+              "createdAt": "2022-01-10T22:42:58Z",
+              "updatedAt": "2022-01-10T23:22:38Z"
+            },
+            {
+              "originalPosition": 509,
+              "body": "The positions of the line breaks are also deliberate. P-384 is broken after 32 bytes to align with P-256 above.  P-521 is broken at 33 bytes to avoid a dangling one-byte line.",
+              "createdAt": "2022-01-10T22:45:35Z",
+              "updatedAt": "2022-01-10T23:22:38Z"
+            },
+            {
+              "originalPosition": 631,
+              "body": "Yes, those rows should reference this document.  I assume the current values are a typo.",
+              "createdAt": "2022-01-10T22:47:11Z",
+              "updatedAt": "2022-01-10T23:22:38Z"
+            },
+            {
+              "originalPosition": 1289,
+              "body": "\"Traditional\" here is not in terms of a human tradition (say, Thanksgiving).  Rather, it describes what is in the literature.",
+              "createdAt": "2022-01-10T23:05:22Z",
+              "updatedAt": "2022-01-10T23:22:38Z"
+            },
+            {
+              "originalPosition": 1240,
+              "body": "It is important that the Acknowledgements come before the test vectors.  They shouldn't be buried after dozens of pages of random-looking data!",
+              "createdAt": "2022-01-10T23:06:18Z",
+              "updatedAt": "2022-01-10T23:22:38Z"
+            },
+            {
+              "originalPosition": 1229,
+              "body": "They exceed the 69-character limit because you modified them to do so!\r\n\r\nI don't have an opinion on `<sourcecode>` vs. `artwork`; if you use the already-wrapped values provided, they should fit within the 69-character limit.",
+              "createdAt": "2022-01-10T23:08:03Z",
+              "updatedAt": "2022-01-10T23:22:38Z"
+            },
+            {
+              "originalPosition": 1274,
+              "body": "I have changed all of these to lower case.",
+              "createdAt": "2022-01-10T23:10:01Z",
+              "updatedAt": "2022-01-10T23:22:38Z"
+            },
+            {
+              "originalPosition": 1277,
+              "body": "I have reviewed the various uses and think they're correct as-is.",
+              "createdAt": "2022-01-10T23:13:00Z",
+              "updatedAt": "2022-01-10T23:22:38Z"
+            },
+            {
+              "originalPosition": 71,
+              "body": "Personally, I generally prefer \"public-key\" in this position, but don't feel strongly.  And the terms document seems pretty clear.  So I have normalized on \"public key\" throughout.",
+              "createdAt": "2022-01-10T23:17:56Z",
+              "updatedAt": "2022-01-10T23:22:38Z"
+            },
+            {
+              "originalPosition": 182,
+              "body": "I don't think there's any artwork in this document.  For the most part, the `type` attribute should be `pseudocode`, except for the test vectors, which should be `test-vectors`.",
+              "createdAt": "2022-01-10T23:21:07Z",
+              "updatedAt": "2022-01-10T23:22:38Z"
+            },
+            {
+              "originalPosition": 1213,
+              "body": "I'm OK with this rendering in the fixed-width version, as long as the HTML/PDF versions yield fixed-width.  @chris-wood @blipp ?",
+              "createdAt": "2022-01-10T23:22:08Z",
+              "updatedAt": "2022-01-10T23:22:38Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOC3hbXs4ykwHS",
+          "commit": {
+            "abbreviatedOid": "bd97b99"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-11T00:40:05Z",
+          "updatedAt": "2022-01-11T00:40:06Z",
+          "comments": [
+            {
+              "originalPosition": 1213,
+              "body": "Yep, that works for me.",
+              "createdAt": "2022-01-11T00:40:05Z",
+              "updatedAt": "2022-01-11T00:40:06Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOC3hbXs4ykwH9",
+          "commit": {
+            "abbreviatedOid": "bd97b99"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-01-11T00:40:11Z",
+          "updatedAt": "2022-01-11T00:40:11Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOC3hbXs4ysHt2",
+          "commit": {
+            "abbreviatedOid": "bd97b99"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-12T12:38:39Z",
+          "updatedAt": "2022-01-12T12:38:39Z",
+          "comments": [
+            {
+              "originalPosition": 111,
+              "body": "Looking at the [HTML](https://www.rfc-editor.org/authors/rfc9180.html) and the [PDF](https://www.rfc-editor.org/authors/rfc9180.pdf), the lists here got changed into definition lists. Semantically, that's probably what they should be. However, the rendering has no bullet points, which makes it kind of hard to read to me. Or maybe it is not the bullet points but the fact that `<code>` elements do _not_ have a slightly different color like in the rest of the document. What do you think?\r\n\r\nEdited to add: Looking at it again. In Section 3 \u201cNotation\u201d, I think it looks alright without bullet points. I guess it is the indentation in Section 4 that is confusing me. It makes it look a bit cluttered.\r\nI understand that the indentation was added to separate KEM, KDF, and AEAD. Is there another way? Making them subsections (that would make DHKEM as last subsection look a bit weird)? Or some kind of \u201cparagraph title\u201d, is that a thing?\r\n\r\nI see that the definition list below \u201cBeyond the above, a KEM MAY also expose the following functions\u201d is not indented. Should it be, to be consistent?",
+              "createdAt": "2022-01-12T12:38:39Z",
+              "updatedAt": "2022-01-12T13:03:00Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOC3hbXs4ysIhQ",
+          "commit": {
+            "abbreviatedOid": "bd97b99"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-12T12:41:54Z",
+          "updatedAt": "2022-01-12T12:41:55Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "```suggestion\r\nagreement, the HMAC-based key derivation function (HKDF), and SHA2.\r\n```\r\nI feel like when using the non-abbreviated form of HKDF, this needs a \u201cthe\u201d? (because it is a \u201cfunction\u201d)",
+              "createdAt": "2022-01-12T12:41:54Z",
+              "updatedAt": "2022-01-12T12:41:55Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOC3hbXs4ysJjV",
+          "commit": {
+            "abbreviatedOid": "bd97b99"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-12T12:46:05Z",
+          "updatedAt": "2022-01-12T12:46:05Z",
+          "comments": [
+            {
+              "originalPosition": 639,
+              "body": "The oracle itself does not distinguish between good and wrong PSKs, it is the adversary that uses the oracle to do that.",
+              "createdAt": "2022-01-12T12:46:05Z",
+              "updatedAt": "2022-01-12T12:46:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOC3hbXs4ysLST",
+          "commit": {
+            "abbreviatedOid": "bd97b99"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-12T12:53:00Z",
+          "updatedAt": "2022-01-12T12:53:00Z",
+          "comments": [
+            {
+              "originalPosition": 1213,
+              "body": "Works for me. Please see my related comment on the definition lists in \u201cCryptographic Dependencies\u201d.",
+              "createdAt": "2022-01-12T12:53:00Z",
+              "updatedAt": "2022-01-12T12:53:00Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOC3hbXs4yudFL",
+          "commit": {
+            "abbreviatedOid": "bd97b99"
+          },
+          "author": "blipp",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-12T21:47:31Z",
+          "updatedAt": "2022-01-12T21:47:32Z",
+          "comments": [
+            {
+              "originalPosition": 639,
+              "body": "Coming back to it, I think the change done by the editors is good. Please excuse the noise.",
+              "createdAt": "2022-01-12T21:47:32Z",
+              "updatedAt": "2022-01-12T21:47:32Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOC3hbXs4yzkvC",
+          "commit": {
+            "abbreviatedOid": "bd97b99"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-14T00:32:04Z",
+          "updatedAt": "2022-01-14T00:32:04Z",
+          "comments": [
+            {
+              "originalPosition": 40,
+              "body": "I don't think so -- this reads fine without \"the\".",
+              "createdAt": "2022-01-14T00:32:04Z",
+              "updatedAt": "2022-01-14T00:32:04Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOC3hbXs4yzk1i",
+          "commit": {
+            "abbreviatedOid": "bd97b99"
+          },
+          "author": "chris-wood",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-01-14T00:33:03Z",
+          "updatedAt": "2022-01-14T00:33:03Z",
+          "comments": [
+            {
+              "originalPosition": 111,
+              "body": "Possibly, but indentation like that is an xml2rfc oddity. @bifurcation?",
+              "createdAt": "2022-01-14T00:33:03Z",
+              "updatedAt": "2022-01-14T00:33:03Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
